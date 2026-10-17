@@ -1,0 +1,167 @@
+/* ------------------------------------------------------------------
+   Charte Resolvia — TOUTES les couleurs et polices sont ici.
+   Version neutre provisoire : à aligner sur resolvia.be.
+------------------------------------------------------------------- */
+:root {
+  --encre: #1d2b36;          /* texte principal */
+  --encre-douce: #50606c;    /* texte secondaire */
+  --fond: #f7f5f1;           /* fond de page, blanc chaud */
+  --surface: #ffffff;        /* cartes */
+  --ligne: #e3ded5;          /* bordures */
+  --accent: #2f6f6a;         /* couleur Resolvia principale (sarcelle) */
+  --accent-fonce: #22534f;
+  --accent-clair: #e3efed;
+  --or: #b98b3e;             /* touche chaude */
+  --vert: #3b7d4f;
+  --vert-clair: #e6f1e8;
+  --ambre: #a86a12;
+  --ambre-clair: #f8eedc;
+  --rouge: #a8402f;
+  --rouge-clair: #f7e4e0;
+
+  --police-titre: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --police-texte: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --rayon: 12px;
+  --ombre: 0 1px 2px rgba(29, 43, 54, 0.06), 0 4px 16px rgba(29, 43, 54, 0.05);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--police-texte);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); }
+h1, h2, h3 { font-family: var(--police-titre); font-weight: 600; line-height: 1.2; margin: 0 0 0.5em; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; }
+
+.conteneur { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+.etroit { max-width: 720px; }
+
+/* En-tête */
+.entete { background: var(--surface); border-bottom: 1px solid var(--ligne); }
+.entete .conteneur { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; flex-wrap: wrap; }
+.marque { font-family: var(--police-titre); font-size: 1.35rem; font-weight: 700; letter-spacing: 0.08em; color: var(--encre); text-decoration: none; }
+.marque span { color: var(--accent); }
+.nav { display: flex; gap: 16px; align-items: center; font-size: 0.93rem; flex-wrap: wrap; }
+.nav a { text-decoration: none; color: var(--encre-douce); }
+.nav a:hover { color: var(--accent); }
+.qui { color: var(--encre-douce); font-size: 0.85rem; }
+
+.bandeau-simulation { background: var(--ambre-clair); color: var(--ambre); font-size: 0.9rem; padding: 8px 0; border-bottom: 1px solid #ecd9b5; }
+.bandeau-simulation .conteneur { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+main { padding: 32px 0 64px; }
+.pied { color: var(--encre-douce); font-size: 0.82rem; padding: 24px 0 40px; border-top: 1px solid var(--ligne); }
+
+/* Cartes et grilles */
+.carte { background: var(--surface); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 20px; box-shadow: var(--ombre); }
+.grille { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.carte-outil { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
+a.carte-outil:hover { border-color: var(--accent); transform: translateY(-1px); }
+.carte-outil p { color: var(--encre-douce); font-size: 0.93rem; margin: 0; flex: 1; }
+.carte-outil.inactif { opacity: 0.6; box-shadow: none; }
+.section { margin-top: 36px; }
+.section-titre { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.section-titre small { color: var(--encre-douce); }
+.chapeau { color: var(--encre-douce); font-size: 1.05rem; max-width: 640px; }
+
+/* Pastilles de statut */
+.pastille { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.st-brouillon { background: #eceae6; color: #5f5a52; }
+.st-a-relire { background: var(--ambre-clair); color: var(--ambre); }
+.st-a-valider { background: #efe5f3; color: #6d3e80; }
+.st-testeurs { background: var(--accent-clair); color: var(--accent-fonce); }
+.st-public { background: var(--vert-clair); color: var(--vert); }
+
+/* Formulaires et boutons */
+.bouton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 8px; padding: 10px 18px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; min-height: 44px; }
+.bouton:hover { background: var(--accent-fonce); border-color: var(--accent-fonce); }
+.bouton:disabled { opacity: .5; cursor: not-allowed; }
+.bouton.secondaire { background: transparent; color: var(--accent); }
+.bouton.secondaire:hover { background: var(--accent-clair); }
+.bouton.discret { background: transparent; border-color: var(--ligne); color: var(--encre-douce); font-weight: 500; }
+.champ { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.champ label { font-weight: 600; font-size: 0.92rem; }
+input[type=text], input[type=password], select, textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--ligne); border-radius: 8px; background: #fff; color: var(--encre); width: 100%; }
+input:focus, select:focus, textarea:focus, .bouton:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.erreur { color: var(--rouge); font-size: 0.9rem; }
+.note { font-size: 0.85rem; color: var(--encre-douce); }
+
+/* Tableaux */
+.tableau { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+.tableau th, .tableau td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+.tableau th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--encre-douce); }
+.defile { overflow-x: auto; }
+
+/* Encadrés */
+.encadre { border-radius: var(--rayon); padding: 14px 16px; font-size: 0.93rem; }
+.encadre.info { background: var(--accent-clair); color: var(--accent-fonce); }
+.encadre.attention { background: var(--ambre-clair); color: #7a4d0d; }
+.encadre.alerte { background: var(--rouge-clair); color: #7d2f22; }
+
+/* Avis testeur */
+.avis { margin-top: 40px; }
+.avis-flottant { position: fixed; right: 16px; bottom: 16px; z-index: 20; }
+
+@media print {
+  .entete, .pied, .bandeau-simulation, .avis, .avis-flottant, .non-imprime { display: none !important; }
+  body { background: #fff; }
+  .carte { box-shadow: none; }
+}
+
+/* ------------------------------------------------------------------
+   Test de médiabilité
+------------------------------------------------------------------- */
+.surtitre { font-size: 0.78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+.progression { height: 4px; background: var(--ligne); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
+.progression div { height: 100%; background: var(--accent); transition: width .3s ease; }
+
+.question { border: 0; padding: 0; margin: 28px 0 0; }
+.question legend { font-weight: 600; font-size: 1.04rem; display: flex; gap: 10px; align-items: baseline; padding: 0; }
+.question .num { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-clair); color: var(--accent-fonce); font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; }
+.question .aide { color: var(--encre-douce); font-size: .88rem; margin: 6px 0 10px 36px; }
+.question .choix { margin-left: 36px; }
+@media (max-width: 560px) { .question .aide, .question .choix { margin-left: 0; } }
+
+.choix { display: flex; flex-direction: column; gap: 8px; }
+.choix-option { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--ligne); border-radius: 10px; cursor: pointer; background: #fff; transition: border-color .15s, background .15s; }
+.choix-option:hover { border-color: var(--accent); }
+.choix-option.choisi { border-color: var(--accent); background: var(--accent-clair); }
+.choix-option input { margin-top: 4px; accent-color: var(--accent); flex: none; }
+.choix-option span { display: flex; flex-direction: column; gap: 2px; }
+.choix-option small { color: var(--encre-douce); font-size: .85rem; }
+
+.actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+
+.resultat { border-top: 5px solid var(--accent); }
+.resultat.niveau-tres-favorable { border-top-color: var(--vert); }
+.resultat.niveau-favorable { border-top-color: var(--accent); }
+.resultat.niveau-prudence { border-top-color: var(--ambre); }
+.resultat.niveau-peu-indiquee, .resultat.niveau-contre { border-top-color: var(--rouge); }
+
+.jauge { position: relative; height: 34px; background: var(--fond); border: 1px solid var(--ligne); border-radius: 999px; overflow: hidden; margin: 14px 0 18px; }
+.jauge-rempli { height: 100%; border-radius: 999px; transition: width .6s ease; }
+.jauge-rempli.niveau-tres-favorable { background: var(--vert); }
+.jauge-rempli.niveau-favorable { background: var(--accent); }
+.jauge-rempli.niveau-prudence { background: var(--ambre); }
+.jauge-rempli.niveau-peu-indiquee, .jauge-rempli.niveau-contre { background: var(--rouge); }
+.jauge-valeur { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-weight: 700; font-size: 1.05rem; }
+.jauge-valeur small { font-weight: 400; color: var(--encre-douce); font-size: .8rem; }
+
+.blocs-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 20px; margin-top: 8px; }
+.bloc-ligne { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 600; margin-bottom: 4px; }
+.barre { height: 6px; background: var(--ligne); border-radius: 6px; overflow: hidden; }
+.barre div { height: 100%; background: var(--accent); }
+
+.liste { padding-left: 20px; margin: 0; }
+.liste li { margin: 6px 0; }
+.encadre h3 { font-size: 1rem; margin-bottom: 6px; }
