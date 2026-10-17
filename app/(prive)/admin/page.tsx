@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { exigerAdmin, listeAcces } from "@/lib/acces";
 import { voirEnTantQue } from "@/lib/actions";
 import { OUTILS, RUBRIQUES, STATUTS, VERIFICATIONS } from "@/lib/outils";
@@ -19,6 +20,10 @@ export default async function Admin() {
         Phase sans base de données : les statuts se changent dans <code>lib/outils.ts</code>, les accès dans la
         variable Vercel <code>RESOLVIA_ACCES</code>. Les avis des testeurs arrivent par e-mail.
       </p>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <Link className="bouton secondaire" href="/pilotage/tableau-de-bord">Tableau de bord</Link>
+        <Link className="bouton secondaire" href="/pilotage/registre">Registre faits / hypothèses / décisions</Link>
+      </div>
 
       <section className="section">
         <h2>Voir en tant que</h2>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Marque from "@/components/Marque";
 import { exigerVue } from "@/lib/acces";
 import { seDeconnecter, voirEnTantQue } from "@/lib/actions";
 import { libelleProfession } from "@/lib/profils";
@@ -26,9 +27,7 @@ export default async function LayoutPrive({ children }: { children: React.ReactN
       )}
       <header className="entete">
         <div className="conteneur">
-          <Link href="/" className="marque">
-            RESOLV<span>IA</span>
-          </Link>
+          <Marque />
           <nav className="nav">
             <Link href="/">Outils</Link>
             {estAdmin && <Link href="/admin">Administration</Link>}

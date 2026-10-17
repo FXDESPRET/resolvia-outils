@@ -9,11 +9,10 @@ export default async function PageConnexion() {
   return (
     <main>
       <div className="conteneur" style={{ maxWidth: 440 }}>
-        <p className="marque" style={{ marginBottom: 24 }}>
-          RESOLV<span>IA</span>
-        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo.png" alt="Resolvia — Service de résolution amiable de conflits" className="logo-grand" width={132} height={132} />
         <div className="carte">
-          <h1 style={{ fontSize: "1.5rem" }}>Espace outils</h1>
+          <h1 style={{ fontSize: "1.6rem" }}>Espace outils</h1>
           <p className="note">
             Accès réservé. Saisissez le code personnel qui vous a été communiqué.
           </p>

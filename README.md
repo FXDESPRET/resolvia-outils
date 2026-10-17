@@ -45,6 +45,24 @@ Dans `lib/outils.ts`, modifier `statut` :
 Un testeur ne voit un outil que s'il est au statut `testeurs` ou `public` **et** qu'il lui est attribué.
 Les administrateurs voient tout ; le mode « Voir en tant que » (page Administration) montre l'espace d'un testeur type.
 
+## Les outils
+
+| Rubrique | Outil | Fichier principal |
+|---|---|---|
+| Prescripteurs | Test de médiabilité | `app/(prive)/outils/mediabilite/contenu.ts` |
+| Prescripteurs | Simulateur de coût | `app/(prive)/outils/simulateur-cout/Simulateur.tsx` (valeurs d'exemple en tête) |
+| Prescripteurs | Fiche de préparation client | `app/(prive)/outils/fiche-preparation/Fiche.tsx` |
+| Prescripteurs | Carnet de clauses | `app/(prive)/outils/carnet-clauses/clauses.ts` |
+| Successions | Inventaire des attachements | `app/(prive)/outils/inventaire-attachements/Inventaire.tsx` |
+| Successions | Schéma de l'indivision | `app/(prive)/outils/schema-indivision/Schema.tsx` |
+| Successions | Kit de réunion familiale | `app/(prive)/outils/kit-reunion-familiale/Kit.tsx` |
+| Associés | Bilan de santé de l'association | `app/(prive)/outils/bilan-association/Bilan.tsx` |
+| Associés | Pacte de désaccord | `app/(prive)/outils/pacte-desaccord/Pacte.tsx` |
+| Contenus | Cas du mois, FAQ, offres et biographies | `app/(prive)/contenus/…/page.tsx` |
+| Pilotage (admin) | Tableau de bord, registre | `lib/registre.ts` |
+
+Chaque page d'outil affiche aux administrateurs un encadré « À vérifier avant ouverture » listant les points juridiques ou déontologiques à contrôler.
+
 ## Modifier les textes du test de médiabilité
 
 Tous les textes (questions, réponses, pondérations, verdicts, questions à poser au client) sont dans
@@ -52,7 +70,7 @@ Tous les textes (questions, réponses, pondérations, verdicts, questions à pos
 
 ## Charte graphique
 
-Couleurs et polices sont regroupées en haut de `app/globals.css` (version neutre provisoire, à aligner sur resolvia.be).
+Couleurs (vert sauge tiré du logo) et polices (Alegreya) sont regroupées en haut de `app/globals.css`. Le logo est dans `public/logo.png`.
 
 ## Travailler en local
 

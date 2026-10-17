@@ -125,6 +125,7 @@ export async function exigerAdmin() {
 /** Règle de visibilité : l'admin voit tout ; un testeur voit les outils ouverts qui lui sont attribués. */
 export function peutVoir(vue: Vue, outil: Outil) {
   if (vue.role === "admin") return true;
+  if (outil.rubrique === "pilotage") return false; // toujours privé
   const ouvert = outil.statut === "testeurs" || outil.statut === "public";
   const attribue = vue.outils.includes("*") || vue.outils.includes(outil.id);
   return ouvert && attribue;
