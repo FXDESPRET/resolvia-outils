@@ -20,6 +20,7 @@ export const REGISTRE: Entree[] = [
   // ---------- Questions à étudier ----------
   { date: "2026-10-17", type: "question", priorite: true, texte: "Rôle exact du médiateur agréé : peut-il formuler lui-même des propositions de solution lorsque les parties le lui demandent, et jusqu'où, sans sortir de son rôle ?", verification: "Formation HEC ; code de bonne conduite de la Commission fédérale de médiation ; échanges avec des médiateurs agréés expérimentés.", statut: "ouverte" },
   { date: "2026-10-17", type: "question", priorite: true, texte: "Comment se positionner à la fois comme facilitateur, conciliateur et médiateur sans brouiller le message auprès des juges, avocats et notaires, qui ont le réflexe du médiateur agréé ?", verification: "Formation HEC ; retours des testeurs prescripteurs sur la page « Repères ».", statut: "ouverte" },
+  { date: "2026-10-17", type: "question", texte: "Lorsqu'un assureur oriente et finance une médiation : quelles garanties de neutralité offrir à l'autre partie, et que peut-on communiquer à l'assureur sans porter atteinte à la confidentialité ?", verification: "Formation HEC ; code de bonne conduite ; Amandine.", statut: "ouverte" },
   { date: "2026-10-17", type: "question", texte: "Obligation de l'expert judiciaire de tenter la conciliation : disposition exacte du Code judiciaire et pratique réelle des juridictions.", verification: "Amandine ; pratique d'expertise de FX.", statut: "ouverte" },
   { date: "2026-10-17", type: "question", texte: "Prise en charge de la médiation et de la conciliation par les assurances protection juridique en Belgique, comparée à la France.", verification: "Conditions générales de quelques contrats ; échange avec un courtier.", statut: "ouverte" },
 
@@ -42,6 +43,9 @@ export const REGISTRE: Entree[] = [
   { date: "2026-10-17", type: "decision", texte: "Principe de communication : ne jamais obliger le prescripteur à choisir entre médiation, conciliation et facilitation ; la médiation agréée est la réponse par défaut, le médiateur adapte sa posture au dossier.", source: "FX" },
   { date: "2026-10-17", type: "decision", texte: "Positionnement du duo : une avocate et un négociateur ; la connaissance du bâtiment et de l'expertise judiciaire vient en appui.", source: "FX" },
 
+  { date: "2026-10-17", type: "decision", texte: "Phrase de positionnement : « Le droit pour sécuriser l'accord, la négociation pour l'obtenir. » Règle de ton : « une avocate et un négociateur », jamais « pas des avocats ».", source: "FX (à confirmer avec Amandine)" },
+  { date: "2026-10-17", type: "decision", texte: "Chaque cible est abordée par ce qu'elle vit, son objection cachée et ses motivations ; la réponse commune : « vous gardez votre rôle, nous prenons ce qui vous pèse ».", source: "FX" },
+
   // ---------- Faits ----------
   { date: "2026-10-17", type: "fait", texte: "Ce qui motive FX dans l'expertise judiciaire : la conciliation, la négociation et la créativité pour rapprocher les points de vue, davantage que la partie technique.", source: "FX" },
   { date: "2026-10-17", type: "fait", texte: "FX est peu désigné comme expert judiciaire : les juges travaillent surtout avec les experts qu'ils connaissent, déjà bien établis dans son domaine.", source: "FX" },
@@ -63,6 +67,9 @@ export const REGISTRE: Entree[] = [
   { date: "2026-10-17", type: "hypothese", texte: "Les assureurs (responsabilité civile construction, protection juridique, recours) peuvent orienter une part significative de leurs dossiers litigieux vers la médiation.",
     verification: "Entretiens avec quelques gestionnaires de sinistres et courtiers ; test de l'outil « Portefeuille de sinistres ».", statut: "ouverte" },
   { date: "2026-10-17", type: "hypothese", texte: "Une garantie d'assurance ou une clause de copropriété imposant d'abord la conciliation ou la médiation reste une opportunité à moyen terme, plus facile à défendre une fois Resolvia doté de deux médiateurs agréés.", verification: "Reprendre contact avec assureurs et syndics après l'agrément.", statut: "ouverte" },
+  { date: "2026-10-17", type: "hypothese", texte: "Les avocats recommanderont plus volontiers un duo dont le négociateur ne plaide pas et ne conseille pas, parce qu'ils ne risquent pas d'y perdre leur client.", verification: "Entretiens avec des avocats testeurs.", statut: "ouverte" },
+  { date: "2026-10-17", type: "hypothese", texte: "L'argument de l'impartialité convaincra les notaires mieux que celui du temps gagné.", verification: "Entretiens avec des notaires testeurs.", statut: "ouverte" },
+  { date: "2026-10-17", type: "hypothese", texte: "Un programme pilote de dix dossiers est la porte d'entrée la plus réaliste chez un assureur belge.", verification: "Premiers rendez-vous avec des compagnies et des courtiers après l'agrément.", statut: "ouverte" },
   { date: "2026-10-17", type: "hypothese", texte: "Les entrepreneurs et architectes peuvent être des prescripteurs de médiation en construction.", verification: "Échanges avec quelques assureurs et entreprises pendant la phase de test.", statut: "ouverte" },
   { date: "2026-10-17", type: "hypothese", texte: "Le plan gratuit de Vercel ne convient pas à un usage commercial.", verification: "Relire les conditions actuelles de Vercel avant le lancement.", statut: "ouverte" },
 ];

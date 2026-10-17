@@ -201,6 +201,14 @@ export const OUTILS: Outil[] = [
     chemin: "/contenus/faq",
   },
   {
+    id: "programme-pilote-assureurs",
+    titre: "Programme pilote assureurs",
+    rubrique: "contenus",
+    statut: "brouillon",
+    resume: "Fiche à imprimer pour un rendez-vous avec une compagnie : dix dossiers, des engagements concrets, un bilan chiffré.",
+    chemin: "/contenus/programme-pilote-assureurs",
+  },
+  {
     id: "offres",
     titre: "Offres et biographies",
     rubrique: "contenus",

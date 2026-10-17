@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { exigerVue, outilsVisibles } from "@/lib/acces";
+import { POSITIONNEMENT, cibleDe } from "@/lib/cibles";
 import { RUBRIQUES, STATUTS, type Rubrique } from "@/lib/outils";
 
 export default async function Accueil() {
   const vue = await exigerVue();
   const outils = outilsVisibles(vue);
   const admin = vue.role === "admin";
+  const cible = admin ? undefined : cibleDe(vue.profession);
   const rubriques = (Object.keys(RUBRIQUES) as Rubrique[]).filter((r) =>
     outils.some((o) => o.rubrique === r),
   );
@@ -18,6 +20,15 @@ export default async function Accueil() {
           ? "Vue administrateur : tous les outils apparaissent, avec leur statut. Les testeurs ne voient que les outils ouverts qui leur sont attribués."
           : "Merci de tester ces outils. Ils fonctionnent entièrement dans votre navigateur : rien de ce que vous saisissez n'est enregistré. Un bouton vous permet de donner votre avis sur chacun."}
       </p>
+
+      {cible && (
+        <div className="carte resultat section" style={{ marginTop: 0 }}>
+          <p className="surtitre">Resolvia, pour vous</p>
+          <h2>{POSITIONNEMENT}</h2>
+          <p>{cible.pourquoiNous}</p>
+          <p className="message-cible" style={{ marginBottom: 0 }}>{"«\u00a0" + cible.message + "\u00a0»"}</p>
+        </div>
+      )}
 
       {outils.length === 0 && (
         <div className="encadre info section">

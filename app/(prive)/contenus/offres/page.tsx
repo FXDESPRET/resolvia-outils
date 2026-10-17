@@ -1,4 +1,5 @@
 import CadreOutil from "@/components/CadreOutil";
+import { DISTINCTION, POSITIONNEMENT } from "@/lib/cibles";
 
 export const metadata = { title: "Offres et biographies" };
 
@@ -30,8 +31,8 @@ const OFFRES = [
   {
     titre: "Compagnies d'assurance et courtiers",
     pour: "Gestionnaires de sinistres, services juridiques et courtiers : responsabilité civile construction, protection juridique, recours entre assureurs, sinistres en copropriété.",
-    comment: "Tri des dossiers médiables, médiations à plusieurs parties réunissant assurés et assureurs, constat technique commun lorsque les faits sont contestés.",
-    plus: "Clôturer plus vite, réduire les frais de défense et d'expertise, et préserver la relation avec l'assuré. À terme : intégrer un recours amiable préalable dans les contrats, notamment en protection juridique et en copropriété.",
+    comment: "Le deuxième niveau : nous intervenons quand la gestion amiable interne s'arrête, avant que l'avocat et l'expert ne coûtent cher. Médiations à plusieurs parties réunissant assurés et assureurs, constat technique commun, forfait par dossier, délai cible de première séance, compte rendu au gestionnaire dans le respect de la confidentialité, charte d'indépendance remise à toutes les parties. Entrée recommandée : un programme pilote de dix dossiers.",
+    plus: "Agir sur vos indicateurs : coût des sinistres, délai de clôture, réserves, satisfaction des assurés. À terme : intégrer un recours amiable préalable dans les contrats, notamment en protection juridique et en copropriété.",
   },
   {
     titre: "Formations en négociation et gestion des conflits",
@@ -61,11 +62,28 @@ export default function Page() {
         "Compatibilité de l'activité d'expert judiciaire avec celle de médiateur, et règles de présentation de la qualité d'expert judiciaire dans une communication commerciale.",
         "Formulation « connaît la pratique de l'expertise judiciaire » plutôt que « expert » dans la présentation des offres de médiation.",
         "Assureurs : vérifier le vocabulaire et la pertinence de l'offre auprès d'un gestionnaire de sinistres testeur.",
-        "Positionnement « une avocate et un négociateur » : à confirmer avec Amandine.",
+        "Positionnement « une avocate et un négociateur » et phrase « Le droit pour sécuriser l'accord, la négociation pour l'obtenir » : à confirmer avec Amandine.",
+        "Engagements (forfait, délai de première séance, compte rendu) : à chiffrer avant toute présentation.",
+        "Compte rendu au prescripteur ou à l'assureur : vérifier ce qui peut être communiqué sans porter atteinte à la confidentialité de la médiation.",
         "Posture du médiateur (aider à faire émerger des options, ou proposer des solutions à la demande des parties) : à préciser après la formation HEC avant toute formulation publique.",
         "Formations : cohérence avec l'offre de formations Resolvia existante (négociation commerciale, gestion des conflits).",
       ]}
     >
+      <div className="carte resultat" style={{ marginBottom: 24 }}>
+        <p className="surtitre">Resolvia</p>
+        <h2 style={{ fontSize: "1.6rem" }}>{POSITIONNEMENT}</h2>
+        <p style={{ marginBottom: 0 }}>Une avocate et un négociateur, médiateurs, pour des accords à la fois solides et réalistes.</p>
+      </div>
+
+      <section style={{ marginBottom: 24 }}>
+        <h2>Ce qui nous distingue</h2>
+        <div className="grille-3">
+          {DISTINCTION.map((d) => (
+            <div key={d.titre} className="carte"><h3>{d.titre}</h3><p style={{ margin: 0 }}>{d.texte}</p></div>
+          ))}
+        </div>
+      </section>
+
       <section>
         <h2>Nos offres</h2>
         <div className="grille-2">

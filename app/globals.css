@@ -276,3 +276,10 @@ input[type=number], input[type=date] { font: inherit; padding: 10px 12px; border
 .grille-enjeux .niveau-2 { color: var(--accent-fonce); font-size: 1.2rem; }
 .grille-enjeux .niveau-1 { color: var(--sauge); font-size: 1.1rem; }
 .grille-enjeux .niveau-0 { color: var(--ligne); }
+.fiche-cible .objection { font-family: var(--police-titre); font-style: italic; font-size: 1.08rem; color: var(--ambre); }
+.message-cible { font-family: var(--police-titre); font-size: 1.2rem; color: var(--accent-fonce); border-left: 4px solid var(--sauge); padding: 6px 0 6px 14px; margin: 16px 0 12px; }
+.fiche-cible { scroll-margin-top: 16px; }
+.pt { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: middle; }
+.pt-2 { background: var(--accent-fonce); }
+.pt-1 { border: 2px solid var(--sauge); background: linear-gradient(90deg, var(--sauge) 50%, transparent 50%); }
+.pt-0 { width: 6px; height: 6px; background: var(--ligne); }
