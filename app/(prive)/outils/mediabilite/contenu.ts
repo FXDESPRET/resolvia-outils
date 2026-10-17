@@ -88,16 +88,16 @@ export const QUESTIONS: Question[] = [
   {
     id: "client",
     bloc: "volonte",
-    texte: "Votre client est-il prêt à envisager une solution négociée ?",
+    texte: "La partie que vous représentez (ou vous-même) est-elle prête à envisager une solution négociée ?",
     aide: "Une hésitation est normale au départ ; elle se travaille souvent en première séance.",
     options: [
-      { libelle: "Oui, il le souhaite", points: 3, note: "Client demandeur d'une solution négociée." },
-      { libelle: "Il hésite, mais n'exclut rien", points: 2 },
+      { libelle: "Oui, elle le souhaite", points: 3, note: "Partie demandeuse d'une solution négociée." },
+      { libelle: "Elle hésite, mais n'exclut rien", points: 2 },
       {
-        libelle: "Il veut avant tout « gagner » ou obtenir une reconnaissance",
+        libelle: "Elle veut avant tout « gagner » ou obtenir une reconnaissance",
         points: 1,
         drapeau: "vigilance",
-        note: "Besoin de reconnaissance : la médiation peut y répondre autrement qu'un jugement ; à expliquer au client.",
+        note: "Besoin de reconnaissance : la médiation peut y répondre autrement qu'un jugement ; à expliquer à la partie concernée.",
       },
     ],
   },
@@ -105,7 +105,7 @@ export const QUESTIONS: Question[] = [
     id: "autre-partie",
     bloc: "volonte",
     texte: "Comment l'autre partie réagirait-elle, selon vous, à une proposition de médiation ?",
-    aide: "La médiation est volontaire : l'accord des deux parties est nécessaire pour la commencer.",
+    aide: "La médiation réunit au moins deux parties et suppose l'accord de chacune. Si l'autre partie remplit aussi le test, sa réponse remplacera cette estimation.",
     options: [
       { libelle: "Plutôt favorablement", points: 3 },
       { libelle: "Je ne sais pas", points: 2 },

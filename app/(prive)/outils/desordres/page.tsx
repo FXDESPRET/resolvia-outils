@@ -9,10 +9,11 @@ export default function Page() {
       id="desordres"
       confidentialite={false}
       aVerifier={[
-        "FX : exactitude technique de chaque fiche, désordres à ajouter (par exemple abris de piscine, chauffage, pompes à chaleur, couvertures automatiques).",
+        "FX : exactitude technique de chaque fiche, désordres à ajouter (abris et couvertures de piscine, toitures plates…).",
+        "Amandine : fiches « Déroulement du chantier et contrat » (réception, retenues, suppléments, rupture) au regard de sa pratique en droit de la construction.",
         "Ton : rester descriptif, sans désigner de responsable type.",
       ]}
-      chapeau="Pour les piscines et le traitement de l'eau, les étangs et bassins, et les extérieurs : les désordres les plus fréquents, les questions à poser, les preuves à conserver et les analyses qui permettent de trancher les débats techniques."
+      chapeau="Du contrat de chantier aux piscines, en passant par le gros œuvre, les techniques, les finitions et les extérieurs : les litiges les plus fréquents, les questions à poser, les preuves à conserver et les analyses qui permettent de dépasser les débats techniques."
     >
       <Fiches />
     </CadreOutil>

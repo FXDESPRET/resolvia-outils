@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ActionsResultat from "@/components/ActionsResultat";
+import FriseTemps, { formatMois } from "@/components/FriseTemps";
 
 // Valeurs d'EXEMPLE, à remplacer par celles du dossier.
 // Hypothèses à valider (Amandine) avant ouverture aux testeurs.
@@ -21,8 +22,14 @@ const DEFAUTS = {
   appel: false,
   heuresAvocatAppel: 20,
   fraisProcedure: 2500,
-  dureePremiereMois: 18,
-  dureeAppelMois: 18,
+  // Durées de la première instance, décomposées
+  miseEnEtatMois: 8,
+  attenteAudienceMois: 10,
+  deliberMois: 2,
+  dureeAppelMois: 24,
+  // Coût du temps
+  montantEnJeu: 30000,
+  tauxAnnuel: 4,
   // Temps du client
   heuresClientMediation: 15,
   heuresClientProcedure: 40,
@@ -71,7 +78,12 @@ export default function Simulateur() {
           <Nombre label="Taux horaire de l'avocat (€ HTVA)" aide="Utilisé aussi pour l'accompagnement en médiation" val={v.tauxAvocat} onChange={maj("tauxAvocat")} />
           <Nombre label="Heures d'avocat en première instance" val={v.heuresAvocatPremiere} onChange={maj("heuresAvocatPremiere")} />
           <Nombre label="Frais (huissier, expertise, indemnité de procédure…)" aide="Montant global estimé, en euros" val={v.fraisProcedure} onChange={maj("fraisProcedure")} />
-          <Nombre label="Durée de la première instance (mois)" val={v.dureePremiereMois} onChange={maj("dureePremiereMois")} />
+          <p className="etiquette" style={{ marginTop: 6 }}>Durée de la première instance</p>
+          <div className="grille-3">
+            <Nombre label="Échanges de conclusions (mois)" val={v.miseEnEtatMois} onChange={maj("miseEnEtatMois")} />
+            <Nombre label="Attente d'une date d'audience (mois)" aide="Arriéré des juridictions" val={v.attenteAudienceMois} onChange={maj("attenteAudienceMois")} />
+            <Nombre label="Délibéré et jugement (mois)" val={v.deliberMois} onChange={maj("deliberMois")} />
+          </div>
           <label className="choix-option" style={{ marginBottom: 12 }}>
             <input type="checkbox" checked={v.appel} onChange={maj("appel")} />
             <span>Prévoir un appel</span>
@@ -83,6 +95,19 @@ export default function Simulateur() {
             </div>
           )}
         </fieldset>
+      </div>
+
+      <div className="carte section">
+        <h3>Le coût du temps</h3>
+        <p className="note">
+          Tant que le litige dure, la somme en jeu est bloquée : elle n&apos;est ni encaissée, ni investie, ni
+          disponible pour la trésorerie. Indiquez le montant disputé et un taux annuel de référence (rendement,
+          coût du crédit ou de la trésorerie).
+        </p>
+        <div className="grille-3">
+          <Nombre label="Montant en jeu (€)" val={v.montantEnJeu} onChange={maj("montantEnJeu")} />
+          <Nombre label="Taux annuel de référence (%)" val={v.tauxAnnuel} onChange={maj("tauxAnnuel")} pas={0.5} />
+        </div>
       </div>
 
       <div className="carte section">
@@ -102,16 +127,41 @@ export default function Simulateur() {
       <div className="carte section resultat">
         <p className="surtitre">Comparaison pour votre client</p>
         <h2>
-          {r.economie > 0
-            ? `Économie estimée : ${euros(r.economie)} et ${r.gainMois} mois`
-            : "Dans ces hypothèses, la médiation n'est pas moins chère"}
+          {r.gainMois > 0
+            ? `Une solution environ ${formatMois(r.gainMois)} plus tôt`
+            : "Dans ces hypothèses, la médiation n'est pas plus rapide"}
         </h2>
+        <div className="tuiles">
+          <div className="tuile"><p className="etiquette">Temps gagné</p><p className="chiffre">{formatMois(r.gainMois)}</p></div>
+          <div className="tuile"><p className="etiquette">Économie directe</p><p className="chiffre">{euros(Math.max(0, r.economie))}</p></div>
+          <div className="tuile"><p className="etiquette">Coût du temps évité</p><p className="chiffre">{euros(Math.max(0, r.procedure.immobilisation - r.mediation.immobilisation))}</p></div>
+        </div>
+        <h3 style={{ marginTop: 8 }}>Combien de temps avant une solution ?</h3>
+        <FriseTemps
+          scenarios={[
+            { nom: "Médiation", segments: [{ libelle: "Médiation", mois: v.dureeMediationMois, couleur: "var(--vert)" }] },
+            {
+              nom: v.appel ? "Procédure avec appel" : "Procédure",
+              segments: [
+                { libelle: "Conclusions", mois: v.miseEnEtatMois, couleur: "var(--sauge-fonce)" },
+                { libelle: "Attente d'audience", mois: v.attenteAudienceMois, couleur: "var(--ambre)" },
+                { libelle: "Jugement", mois: v.deliberMois, couleur: "var(--accent-fonce)" },
+                ...(v.appel ? [{ libelle: "Appel", mois: v.dureeAppelMois, couleur: "var(--or)" }] : []),
+              ],
+            },
+          ]}
+        />
+        <p className="note">
+          Les juridictions sont souvent engorgées : une part importante de la durée d&apos;une procédure est de
+          l&apos;attente, pendant laquelle rien n&apos;avance. Une médiation se planifie selon l&apos;agenda des parties.
+        </p>
+        <h3 style={{ marginTop: 16 }}>Combien cela coûte-t-il ?</h3>
         <div style={{ display: "grid", gap: 16, marginTop: 16 }}>
           {[r.mediation, r.procedure, r.echec].map((s) => (
             <div key={s.nom}>
               <div className="bloc-ligne">
                 <span>{s.nom}</span>
-                <span>{euros(s.total)} · {s.mois} mois</span>
+                <span>{euros(s.total)} · {formatMois(s.mois)}</span>
               </div>
               <div className="barre" style={{ height: 14 }}>
                 <div style={{ width: `${(s.total / max) * 100}%`, background: s.couleur }} />
@@ -148,11 +198,12 @@ function calculer(v: Valeurs) {
   const tempsMed = v.heuresClientMediation * v.valeurHeureClient;
   const totalMed = partMediateur + avocatMediation + tempsMed;
 
+  const coutTemps = (mois: number) => v.montantEnJeu * (v.tauxAnnuel / 100) * (mois / 12);
   const heuresProc = v.heuresAvocatPremiere + (v.appel ? v.heuresAvocatAppel : 0);
   const avocatProc = heuresProc * v.tauxAvocat * coefTva;
   const tempsProc = v.heuresClientProcedure * v.valeurHeureClient;
   const totalProc = avocatProc + v.fraisProcedure + tempsProc;
-  const moisProc = v.dureePremiereMois + (v.appel ? v.dureeAppelMois : 0);
+  const moisProc = v.miseEnEtatMois + v.attenteAudienceMois + v.deliberMois + (v.appel ? v.dureeAppelMois : 0);
 
   const temps = (t: number) => (t > 0 ? `, temps du client ${euros(t)}` : "");
   const tvac = v.tva ? " TVAC" : " HTVA";
@@ -162,6 +213,7 @@ function calculer(v: Valeurs) {
       nom: "Médiation qui aboutit",
       total: totalMed,
       mois: v.dureeMediationMois,
+      immobilisation: coutTemps(v.dureeMediationMois),
       couleur: "var(--vert)",
       detail: `Part du médiateur ${euros(partMediateur)}${tvac}, accompagnement par l'avocat ${euros(avocatMediation)}${temps(tempsMed)}`,
     },
@@ -169,6 +221,7 @@ function calculer(v: Valeurs) {
       nom: v.appel ? "Procédure avec appel" : "Procédure en première instance",
       total: totalProc,
       mois: moisProc,
+      immobilisation: coutTemps(moisProc),
       couleur: "var(--sauge-fonce)",
       detail: `Avocat ${euros(avocatProc)}${tvac} (${heuresProc} h), frais ${euros(v.fraisProcedure)}${temps(tempsProc)}`,
     },
@@ -176,6 +229,7 @@ function calculer(v: Valeurs) {
       nom: "Médiation sans accord, puis procédure",
       total: totalMed + totalProc,
       mois: v.dureeMediationMois + moisProc,
+      immobilisation: coutTemps(v.dureeMediationMois + moisProc),
       couleur: "var(--ambre)",
       detail: "Hypothèse prudente : la médiation s'ajoute à la procédure complète.",
     },
@@ -189,11 +243,15 @@ function synthese(v: Valeurs, r: ReturnType<typeof calculer>) {
     "COMPARAISON INDICATIVE MÉDIATION / PROCÉDURE — Resolvia",
     `Montants ${v.tva ? "TVA comprise" : "hors TVA"}, sur hypothèses du dossier.`,
     "",
-    ...[r.mediation, r.procedure, r.echec].map((s) => `- ${s.nom} : ${euros(s.total)}, environ ${s.mois} mois`),
+    "DURÉE AVANT UNE SOLUTION",
+    `- Médiation : ${formatMois(r.mediation.mois)}`,
+    `- ${r.procedure.nom} : ${formatMois(r.procedure.mois)} (dont ${formatMois(v.attenteAudienceMois)} d'attente d'une date d'audience)`,
+    `- Temps gagné : ${formatMois(r.gainMois)}`,
     "",
-    r.economie > 0
-      ? `Économie estimée par la médiation : ${euros(r.economie)} et ${r.gainMois} mois.`
-      : "Dans ces hypothèses, la médiation n'est pas moins chère.",
+    "COÛTS",
+    ...[r.mediation, r.procedure, r.echec].map((s) => `- ${s.nom} : ${euros(s.total)}`),
+    "",
+    `Coût du temps (somme de ${euros(v.montantEnJeu)} bloquée à ${v.tauxAnnuel} % par an) : ${euros(r.mediation.immobilisation)} en médiation, ${euros(r.procedure.immobilisation)} en procédure.`,
     "",
     "Ordre de grandeur indicatif, ni devis ni engagement d'honoraires.",
   ].join("\n");

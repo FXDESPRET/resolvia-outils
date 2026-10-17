@@ -53,11 +53,14 @@ Les administrateurs voient tout ; le mode « Voir en tant que » (page Administr
 | Prescripteurs | Simulateur de coût | `app/(prive)/outils/simulateur-cout/Simulateur.tsx` (valeurs d'exemple en tête) |
 | Prescripteurs | Fiche de préparation client | `app/(prive)/outils/fiche-preparation/Fiche.tsx` |
 | Prescripteurs | Carnet de clauses | `app/(prive)/outils/carnet-clauses/clauses.ts` |
+| Prescripteurs | Préparer une négociation | `app/(prive)/outils/preparer-negociation/Negociation.tsx` |
+| Prescripteurs | Portefeuille de sinistres (assureurs) | `app/(prive)/outils/portefeuille-sinistres/Portefeuille.tsx` |
 | Successions | Inventaire des attachements | `app/(prive)/outils/inventaire-attachements/Inventaire.tsx` |
 | Successions | Schéma de l'indivision | `app/(prive)/outils/schema-indivision/Schema.tsx` |
 | Successions | Kit de réunion familiale | `app/(prive)/outils/kit-reunion-familiale/Kit.tsx` |
 | Associés | Bilan de santé de l'association | `app/(prive)/outils/bilan-association/Bilan.tsx` |
 | Associés | Pacte de désaccord | `app/(prive)/outils/pacte-desaccord/Pacte.tsx` |
+| Construction | Comprendre l'expertise judiciaire | `app/(prive)/outils/expertise-judiciaire/page.tsx` |
 | Construction | Diagnostic d'un litige de construction | `app/(prive)/outils/diagnostic-construction/Diagnostic.tsx` |
 | Construction | Budget de résolution technique (sapiteurs) | `app/(prive)/outils/budget-technique/Budget.tsx` |
 | Construction | Désordres fréquents | `lib/construction.ts` (données partagées : désordres, sapiteurs et leurs coûts d'exemple) |
@@ -71,6 +74,10 @@ Chaque page d'outil affiche aux administrateurs un encadré « À vérifier avan
 
 Tous les textes (questions, réponses, pondérations, verdicts, questions à poser au client) sont dans
 `app/(prive)/outils/mediabilite/contenu.ts`.
+
+Le test peut être rempli par une partie (résultat provisoire) ou par les deux. Pour combiner deux tests remplis
+séparément, chaque partie obtient un code de réponse (`RM1-…`, uniquement des chiffres) à transmettre à l'autre.
+L'indice retenu est celui de la partie la moins disposée.
 
 ## Charte graphique
 

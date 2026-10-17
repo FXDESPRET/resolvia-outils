@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ActionsResultat from "@/components/ActionsResultat";
+import FriseTemps, { formatMois } from "@/components/FriseTemps";
 import { SAPITEURS, type SapiteurId } from "@/lib/construction";
 
 // VALEURS D'EXEMPLE — à remplacer par des tarifs réels (FX / Amandine).
@@ -24,8 +25,12 @@ const DEFAUTS = {
   fraisExpertJudiciaire: 400,
   heuresAvocatJudiciaire: 35,
   fraisProcedure: 1500,
+  moisAvantExpertise: 3,
   moisExpertise: 12,
-  moisProcedure: 18,
+  attenteAudienceMois: 10,
+  moisProcedure: 6,
+  montantEnJeu: 40000,
+  tauxAnnuel: 4,
   tauxAvocat: 150,
 };
 type Valeurs = typeof DEFAUTS;
@@ -44,17 +49,21 @@ export default function Budget() {
     setV((x) => ({ ...x, [k]: e.target.type === "checkbox" ? e.target.checked : Number(e.target.value) || 0 }));
 
   const r = useMemo(() => calculer(v, sap), [v, sap]);
+  const dureeJud = v.moisAvantExpertise + v.moisExpertise + v.attenteAudienceMois + v.moisProcedure;
+  const coutTemps = (m: number) => v.montantEnJeu * (v.tauxAnnuel / 100) * (m / 12);
   const max = Math.max(r.amiable.total, r.judiciaire.total, 1);
 
   const texte = [
     "BUDGET DE RÉSOLUTION TECHNIQUE — Resolvia",
     `Montants ${v.tva ? "TVA comprise" : "hors TVA"}, ${v.parties} parties, valeurs à confirmer.`,
     "",
-    `VOIE AMIABLE (${v.coMediation ? "co-médiation" : "médiation"} + expert commun) : ${euros(r.amiable.total)}, environ ${v.moisAmiable} mois`,
+    `Temps gagné par la voie amiable : ${formatMois(Math.max(0, dureeJud - v.moisAmiable))}`,
+    "",
+    `VOIE AMIABLE (${v.coMediation ? "co-médiation" : "médiation"} + expert commun) : ${euros(r.amiable.total)}, environ ${formatMois(v.moisAmiable)}`,
     ...r.amiable.lignes.map(([l, m]) => `  - ${l} : ${euros(m)}`),
     `  Par partie : environ ${euros(r.amiable.parPartie)}`,
     "",
-    `VOIE JUDICIAIRE (expertise judiciaire + procédure) : ${euros(r.judiciaire.total)}, environ ${v.moisExpertise + v.moisProcedure} mois`,
+    `VOIE JUDICIAIRE (expertise judiciaire + procédure) : ${euros(r.judiciaire.total)}, environ ${formatMois(dureeJud)}`,
     ...r.judiciaire.lignes.map(([l, m]) => `  - ${l} : ${euros(m)}`),
     "",
     "SAPITEURS RETENUS",
@@ -139,9 +148,12 @@ export default function Budget() {
           <Champ l="Frais de l'expert judiciaire" v={v.fraisExpertJudiciaire} f={maj("fraisExpertJudiciaire")} />
           <Champ l="Heures d'avocat par partie" a="Expertise et procédure au fond" v={v.heuresAvocatJudiciaire} f={maj("heuresAvocatJudiciaire")} />
           <Champ l="Frais de procédure (global)" v={v.fraisProcedure} f={maj("fraisProcedure")} />
+          <p className="etiquette" style={{ marginTop: 6 }}>Durées</p>
           <div className="grille-3">
+            <Champ l="Avant l'expertise (mois)" a="Citation, désignation de l'expert" v={v.moisAvantExpertise} f={maj("moisAvantExpertise")} />
             <Champ l="Expertise (mois)" v={v.moisExpertise} f={maj("moisExpertise")} />
-            <Champ l="Procédure (mois)" v={v.moisProcedure} f={maj("moisProcedure")} />
+            <Champ l="Attente d'audience (mois)" a="Arriéré des juridictions" v={v.attenteAudienceMois} f={maj("attenteAudienceMois")} />
+            <Champ l="Plaidoiries et jugement (mois)" v={v.moisProcedure} f={maj("moisProcedure")} />
           </div>
         </fieldset>
       </div>
@@ -150,6 +162,8 @@ export default function Budget() {
         <div className="grille-3">
           <Champ l="Nombre de parties" v={v.parties} f={maj("parties")} />
           <Champ l="Taux horaire des avocats (€ HTVA)" v={v.tauxAvocat} f={maj("tauxAvocat")} />
+          <Champ l="Montant en jeu (€)" a="Travaux, solde, indemnités disputés" v={v.montantEnJeu} f={maj("montantEnJeu")} />
+          <Champ l="Taux annuel de référence (%)" a="Coût de l'argent bloqué" v={v.tauxAnnuel} f={maj("tauxAnnuel")} />
         </div>
         <label className="choix-option">
           <input type="checkbox" checked={v.tva} onChange={maj("tva")} />
@@ -160,13 +174,34 @@ export default function Budget() {
       <div className="carte section resultat">
         <p className="surtitre">Comparaison pour l&apos;ensemble des parties</p>
         <h2>
-          {r.judiciaire.total > r.amiable.total
-            ? `La voie amiable coûterait environ ${euros(r.judiciaire.total - r.amiable.total)} de moins, et ${v.moisExpertise + v.moisProcedure - v.moisAmiable} mois de moins`
-            : "Dans ces hypothèses, la voie amiable n'est pas moins chère"}
+          {dureeJud > v.moisAmiable
+            ? `Une solution environ ${formatMois(dureeJud - v.moisAmiable)} plus tôt`
+            : "Dans ces hypothèses, la voie amiable n'est pas plus rapide"}
         </h2>
+        <div className="tuiles">
+          <div className="tuile"><p className="etiquette">Temps gagné</p><p className="chiffre">{formatMois(Math.max(0, dureeJud - v.moisAmiable))}</p></div>
+          <div className="tuile"><p className="etiquette">Économie directe</p><p className="chiffre">{euros(Math.max(0, r.judiciaire.total - r.amiable.total))}</p></div>
+          <div className="tuile"><p className="etiquette">Coût du temps évité</p><p className="chiffre">{euros(Math.max(0, coutTemps(dureeJud) - coutTemps(v.moisAmiable)))}</p></div>
+        </div>
+        <FriseTemps
+          scenarios={[
+            { nom: "Voie amiable", segments: [{ libelle: v.coMediation ? "Co-médiation et constat commun" : "Médiation et constat commun", mois: v.moisAmiable, couleur: "var(--vert)" }] },
+            {
+              nom: "Voie judiciaire",
+              segments: [
+                { libelle: "Avant l'expertise", mois: v.moisAvantExpertise, couleur: "var(--sauge-clair)" },
+                { libelle: "Expertise judiciaire", mois: v.moisExpertise, couleur: "var(--sauge-fonce)" },
+                { libelle: "Attente d'audience", mois: v.attenteAudienceMois, couleur: "var(--ambre)" },
+                { libelle: "Jugement", mois: v.moisProcedure, couleur: "var(--accent-fonce)" },
+              ],
+            },
+          ]}
+        />
+        <p className="note">Pendant tout ce temps, les travaux de réparation attendent souvent la fin de l&apos;expertise, et le désordre peut s&apos;aggraver.</p>
+        <h3 style={{ marginTop: 16 }}>Combien cela coûte-t-il, toutes parties confondues ?</h3>
         {[
-          { nom: `Voie amiable · ${v.moisAmiable} mois`, d: r.amiable, c: "var(--vert)" },
-          { nom: `Voie judiciaire · ${v.moisExpertise + v.moisProcedure} mois`, d: r.judiciaire, c: "var(--sauge-fonce)" },
+          { nom: `Voie amiable · ${formatMois(v.moisAmiable)}`, d: r.amiable, c: "var(--vert)" },
+          { nom: `Voie judiciaire · ${formatMois(dureeJud)}`, d: r.judiciaire, c: "var(--sauge-fonce)" },
         ].map((s) => (
           <div key={s.nom} style={{ marginTop: 16 }}>
             <div className="bloc-ligne"><span>{s.nom}</span><span>{euros(s.d.total)}</span></div>

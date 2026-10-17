@@ -89,8 +89,8 @@ export default function Diagnostic() {
   const texte = pret
     ? [
         "DIAGNOSTIC D'UN LITIGE DE CONSTRUCTION — Resolvia",
-        `Ouvrage : ${ouvrage!.titre}`,
-        `Désordres : ${choisis.map((d) => d.titre).join(", ")}`,
+        `Domaine : ${ouvrage!.titre}`,
+        `Problèmes : ${choisis.map((d) => d.titre).join(", ")}`,
         `Stade : ${STADES[stade!]}${anciennete ? `, apparu depuis : ${ANCIENNETES[anciennete].toLowerCase()}` : ""}`,
         `Intervenants : ${ACTEURS.filter((a) => acteurs.includes(a.id)).map((a) => a.libelle).join(", ")}`,
         "",
@@ -115,7 +115,7 @@ export default function Diagnostic() {
   return (
     <div>
       <div className="carte" style={{ marginBottom: 16 }}>
-        <h2>1. L&apos;ouvrage concerné</h2>
+        <h2>1. Le domaine concerné</h2>
         <div className="grille-3">
           {OUVRAGES.map((o) => (
             <label key={o.id} className={`choix-option ${ouvrageId === o.id ? "choisi" : ""}`}>
@@ -128,7 +128,7 @@ export default function Diagnostic() {
 
       {ouvrage && (
         <div className="carte" style={{ marginBottom: 16 }}>
-          <h2>2. Le ou les désordres</h2>
+          <h2>2. Le ou les problèmes</h2>
           <p className="note">{ouvrage.intro}</p>
           <div className="choix">
             {ouvrage.desordres.map((d) => (
@@ -232,6 +232,7 @@ export default function Diagnostic() {
             </div>
             <div className="carte">
               <h3>Analyses et sapiteurs possibles</h3>
+              {sapiteurs.length === 0 && <p className="note">Pas d&apos;analyse spécialisée a priori : le débat porte surtout sur le contrat et les attentes.</p>}
               <ul className="liste">
                 {sapiteurs.map((s) => <li key={s}><strong>{SAPITEURS[s].titre}</strong> — <span className="note">{SAPITEURS[s].usage}</span></li>)}
               </ul>
@@ -256,7 +257,7 @@ export default function Diagnostic() {
           <ActionsResultat texte={texte} libelleCopie="Copier le diagnostic" />
         </>
       ) : (
-        <p className="note section">Le diagnostic s&apos;affiche dès que l&apos;ouvrage, au moins un désordre et le stade des travaux sont indiqués.</p>
+        <p className="note section">Le diagnostic s&apos;affiche dès que le domaine, au moins un problème et le stade des travaux sont indiqués.</p>
       )}
     </div>
   );

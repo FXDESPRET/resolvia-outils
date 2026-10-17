@@ -62,6 +62,10 @@ const FAQ: { theme: string; questions: { q: string; r: string }[] }[] = [
         r: "C'est un spécialiste auquel l'expert fait appel pour une analyse précise : laboratoire d'analyse d'eau, recherche de fuite, ingénieur en stabilité, géomètre, essais de matériaux. En médiation, les parties choisissent ensemble les analyses utiles et en partagent le coût.",
       },
       {
+        q: "Que fait réellement un expert judiciaire ?",
+        r: "Il répond aux questions techniques que le juge lui a posées : il constate, recherche les causes et estime les travaux, de manière contradictoire. Il ne détermine pas les responsabilités au sens juridique et ne dit pas le droit : c'est le juge qui tranche ensuite. Une expertise éclaire donc les faits, mais ne met pas fin au litige.",
+      },
+      {
         q: "Le médiateur peut-il donner son avis technique ?",
         r: "Non. Le médiateur reste neutre et ne tranche pas. Ses connaissances techniques lui permettent de poser les bonnes questions et de proposer les bonnes vérifications ; les constats eux-mêmes sont confiés à un expert distinct, choisi par les parties.",
       },
@@ -81,6 +85,10 @@ const FAQ: { theme: string; questions: { q: string; r: string }[] }[] = [
       {
         q: "Les avocats ont-ils leur place en médiation ?",
         r: "Oui. L'avocat conseille son client avant, pendant et après la médiation, l'aide à préparer les séances et vérifie l'accord avant signature. Il peut assister aux séances si les parties le souhaitent.",
+      },
+      {
+        q: "Les assureurs peuvent-ils participer à une médiation ?",
+        r: "Oui, et c'est souvent souhaitable : lorsqu'un assureur finance tout ou partie de la solution, sa présence permet de conclure un accord qui sera réellement exécuté. Plusieurs assureurs peuvent participer à la même médiation, par exemple dans un litige de construction impliquant plusieurs intervenants.",
       },
       {
         q: "Que se passe-t-il si l'autre partie refuse ?",

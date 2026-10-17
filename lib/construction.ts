@@ -1,5 +1,5 @@
 // Données techniques communes aux outils « Construction, piscines et eau ».
-// STATUT : À VALIDER PAR FX (expertise technique) — contenus volontairement généraux.
+// STATUT : À VALIDER PAR FX (technique) et AMANDINE (droit de la construction) — contenus volontairement généraux.
 // Coûts des sapiteurs : VALEURS D'EXEMPLE à remplacer par des tarifs réels.
 
 export type SapiteurId =
@@ -11,9 +11,37 @@ export type SapiteurId =
   | "stabilite"
   | "geometre"
   | "electricite"
-  | "analyse-produits";
+  | "analyse-produits"
+  | "sol"
+  | "techniques-speciales"
+  | "metreur"
+  | "planning";
 
 export const SAPITEURS: Record<SapiteurId, { titre: string; usage: string; coutMin: number; coutMax: number }> = {
+  metreur: {
+    titre: "Métreur ou économiste de la construction",
+    usage: "Valeur des travaux réalisés, suppléments, décomptes, coût des travaux de réparation ou d'achèvement.",
+    coutMin: 400,
+    coutMax: 1500,
+  },
+  planning: {
+    titre: "Analyse de planning et de retards",
+    usage: "Reconstitution du déroulement du chantier, causes et imputation des retards, incidence des modifications.",
+    coutMin: 600,
+    coutMax: 2000,
+  },
+  sol: {
+    titre: "Étude de sol (géotechnique)",
+    usage: "Portance du sol, nappe phréatique, tassements ; ouvrages enterrés, fondations, piscines.",
+    coutMin: 800,
+    coutMax: 2500,
+  },
+  "techniques-speciales": {
+    titre: "Bureau d'études en techniques spéciales",
+    usage: "Chauffage, pompes à chaleur, ventilation, sanitaire : dimensionnement, réglages, performances.",
+    coutMin: 500,
+    coutMax: 1500,
+  },
   "labo-eau": {
     titre: "Analyse d'eau en laboratoire",
     usage: "Équilibre de l'eau (pH, TAC, TH), désinfectant et stabilisant, métaux, phosphates, nitrates ; agressivité ou entartrage de l'eau.",
@@ -81,13 +109,200 @@ export type Desordre = {
 };
 
 export type Ouvrage = {
-  id: "piscine" | "bassin" | "exterieur";
+  id: "chantier" | "batiment" | "techniques" | "interieur" | "exterieur" | "piscine" | "bassin";
   titre: string;
   intro: string;
   desordres: Desordre[];
 };
 
 export const OUVRAGES: Ouvrage[] = [
+  {
+    id: "chantier",
+    titre: "Déroulement du chantier et contrat",
+    intro: "Beaucoup de litiges de construction ne portent pas sur un désordre, mais sur le contrat : délais, prix, suppléments, réception, paiement. Ce sont aussi les plus faciles à régler à l'amiable quand ils sont pris tôt.",
+    desordres: [
+      {
+        id: "retard",
+        titre: "Retards et délais",
+        signes: "Délai d'exécution dépassé, chantier à l'arrêt, report répété de la date de fin.",
+        questions: [
+          "Quel était le délai contractuel, et comment se calculait-il (jours ouvrables, intempéries) ?",
+          "Le retard s'explique-t-il par des modifications demandées, d'autres corps de métier, des intempéries, des retards de paiement ?",
+          "Le contrat prévoit-il des pénalités de retard ? Ont-elles été réclamées ?",
+        ],
+        preuves: ["Contrat et planning initial", "Procès-verbaux de réunions de chantier", "Journal de chantier, courriers et mises en demeure"],
+        sapiteurs: ["planning"],
+        piege: "Quand plusieurs causes de retard se cumulent, chacun peut en désigner une autre : une reconstitution chronologique commune évite des mois de débat.",
+      },
+      {
+        id: "supplements",
+        titre: "Suppléments et dépassement de budget",
+        signes: "Factures supérieures au devis, travaux supplémentaires contestés, quantités discutées.",
+        questions: [
+          "Le marché est-il à forfait, sur bordereau de prix ou en régie ?",
+          "Les suppléments ont-ils été commandés par écrit, et leur prix convenu à l'avance ?",
+          "Les quantités facturées correspondent-elles aux quantités réellement mises en œuvre ?",
+        ],
+        preuves: ["Devis, bordereau et avenants signés", "États d'avancement et factures", "Échanges sur les modifications demandées"],
+        sapiteurs: ["metreur"],
+      },
+      {
+        id: "reception",
+        titre: "Réception refusée ou réserves non levées",
+        signes: "Le maître d'ouvrage refuse de réceptionner, ou des réserves restent en suspens depuis longtemps.",
+        questions: [
+          "La réception a-t-elle été demandée, et dans quelles formes ?",
+          "Les réserves sont-elles listées précisément ? Lesquelles sont contestées ?",
+          "Le bien est-il déjà occupé ou utilisé ?",
+        ],
+        preuves: ["Procès-verbal de réception ou demande de réception", "Liste des réserves", "Photos datées de chaque réserve"],
+        sapiteurs: ["metreur"],
+        piege: "La réception a souvent des conséquences juridiques importantes : son moment et ses réserves méritent un avis juridique avant toute signature.",
+      },
+      {
+        id: "paiement",
+        titre: "Solde impayé et retenues",
+        signes: "Le client retient tout ou partie du solde en invoquant des défauts ; l'entrepreneur réclame le paiement.",
+        questions: [
+          "La retenue est-elle proportionnée au coût réel des réparations ?",
+          "Les défauts invoqués sont-ils établis, contestés ou simplement allégués ?",
+          "Une garantie (cautionnement, retenue de garantie) existe-t-elle ?",
+        ],
+        preuves: ["Factures et états d'avancement", "Courriers motivant la retenue", "Estimation du coût des réparations"],
+        sapiteurs: ["metreur"],
+      },
+      {
+        id: "abandon",
+        titre: "Abandon de chantier ou rupture du contrat",
+        signes: "L'entrepreneur ne revient plus, ou le maître d'ouvrage met fin au contrat et veut faire achever par un autre.",
+        questions: [
+          "Qui a mis fin au contrat, et sur quelle base ?",
+          "Quel est l'état d'avancement réel et la valeur des travaux réalisés ?",
+          "Les acomptes versés correspondent-ils aux travaux exécutés ?",
+        ],
+        preuves: ["Constat contradictoire de l'état d'avancement", "Photos et vidéos de l'état du chantier", "Acomptes versés et factures"],
+        sapiteurs: ["metreur"],
+        piege: "Faire achever le chantier par un tiers sans constat préalable de l'état d'avancement prive chacun de la preuve de ce qui avait été fait.",
+      },
+    ],
+  },
+  {
+    id: "batiment",
+    titre: "Gros œuvre et enveloppe",
+    intro: "Fondations, structure, maçonnerie, isolation : les désordres y sont souvent coûteux et les causes multiples (sol, conception, exécution, matériaux).",
+    desordres: [
+      {
+        id: "structure",
+        titre: "Fissures structurelles et tassements",
+        signes: "Fissures traversantes, portes qui coincent, planchers qui fléchissent, affaissement d'une partie du bâtiment.",
+        questions: [
+          "Les fissures évoluent-elles (témoins datés) ?",
+          "Une étude de sol a-t-elle été réalisée ? Des travaux voisins ou des arbres ont-ils pu jouer un rôle ?",
+          "Les plans d'exécution et les calculs de stabilité sont-ils disponibles ?",
+        ],
+        preuves: ["Témoins de fissures datés", "Plans, étude de sol, calculs de stabilité", "Photos d'ensemble et de détail"],
+        sapiteurs: ["stabilite", "sol", "geometre"],
+      },
+      {
+        id: "humidite-enterree",
+        titre: "Caves et parois enterrées humides",
+        signes: "Infiltrations en cave, remontées d'humidité, efflorescences en pied de mur.",
+        questions: [
+          "L'humidité est-elle saisonnière ou permanente ?",
+          "Une étanchéité et un drainage étaient-ils prévus au cahier des charges ?",
+        ],
+        preuves: ["Relevés d'humidité datés", "Cahier des charges et métré", "Photos après fortes pluies"],
+        sapiteurs: ["thermographie", "essais-materiaux"],
+      },
+      {
+        id: "isolation",
+        titre: "Isolation et performance énergétique",
+        signes: "Consommation anormale, parois froides, condensation, performance énergétique inférieure à l'annonce.",
+        questions: [
+          "Les épaisseurs et matériaux posés correspondent-ils au cahier des charges ?",
+          "Les raccords (fenêtres, toiture, dalle) sont-ils continus ?",
+          "Le rapport de performance énergétique a-t-il été établi sur la base des travaux réellement exécutés ?",
+        ],
+        preuves: ["Cahier des charges et fiches techniques des isolants", "Rapport de performance énergétique", "Photos pendant les travaux"],
+        sapiteurs: ["thermographie", "techniques-speciales"],
+      },
+    ],
+  },
+  {
+    id: "techniques",
+    titre: "Installations techniques",
+    intro: "Chauffage, pompes à chaleur, ventilation, sanitaire, électricité : le débat oppose souvent conception, installation, réglage et usage.",
+    desordres: [
+      {
+        id: "chauffage",
+        titre: "Chauffage ou pompe à chaleur insuffisants",
+        signes: "Températures non atteintes, consommation excessive, pannes répétées, bruit.",
+        questions: [
+          "Le dimensionnement a-t-il été calculé (déperditions) et documenté ?",
+          "Les réglages et la mise en service ont-ils été faits et consignés ?",
+          "L'usage et l'entretien correspondent-ils aux prescriptions ?",
+        ],
+        preuves: ["Note de calcul et fiches techniques", "Rapport de mise en service", "Relevés de température et de consommation"],
+        sapiteurs: ["techniques-speciales", "electricite"],
+      },
+      {
+        id: "sanitaire",
+        titre: "Fuites et évacuations",
+        signes: "Fuites intérieures, dégâts des eaux, refoulements, odeurs.",
+        questions: ["La fuite est-elle sur l'alimentation ou l'évacuation ?", "Les pentes et diamètres des évacuations sont-ils corrects ?"],
+        preuves: ["Photos et relevés du compteur", "Plans des canalisations", "Factures des interventions"],
+        sapiteurs: ["recherche-fuite", "camera"],
+      },
+      {
+        id: "ventilation",
+        titre: "Ventilation, condensation, moisissures",
+        signes: "Condensation sur les vitrages, moisissures, air vicié, bruit du système de ventilation.",
+        questions: ["Le système de ventilation est-il conforme au projet et correctement réglé ?", "Les débits ont-ils été mesurés à la mise en service ?"],
+        preuves: ["Rapport de mise en service et mesures de débit", "Photos des moisissures datées"],
+        sapiteurs: ["techniques-speciales", "thermographie"],
+      },
+      {
+        id: "electricite-batiment",
+        titre: "Installation électrique",
+        signes: "Disjonctions, non-conformité relevée au contrôle, équipements endommagés.",
+        questions: ["Le contrôle de conformité a-t-il été réalisé, avec quelles remarques ?", "Les remarques ont-elles été levées ?"],
+        preuves: ["Rapport de contrôle de conformité", "Schémas électriques"],
+        sapiteurs: ["electricite"],
+      },
+    ],
+  },
+  {
+    id: "interieur",
+    titre: "Finitions intérieures",
+    intro: "Carrelage, chapes, menuiseries, plafonnage, peinture : le débat porte souvent sur la frontière entre défaut d'aspect admissible et défaut réel.",
+    desordres: [
+      {
+        id: "carrelage",
+        titre: "Chapes et carrelages",
+        signes: "Fissures, carreaux qui sonnent creux ou se décollent, défauts de planéité.",
+        questions: ["Les temps de séchage de la chape ont-ils été respectés ?", "Le collage et les joints de fractionnement sont-ils conformes ?", "La planéité est-elle dans les tolérances admises ?"],
+        preuves: ["Dates de coulage et de pose", "Fiches techniques de la colle et des carreaux", "Mesures de planéité"],
+        sapiteurs: ["essais-materiaux", "geometre"],
+      },
+      {
+        id: "menuiseries",
+        titre: "Châssis et menuiseries",
+        signes: "Infiltrations d'air ou d'eau, châssis qui ferment mal, buée entre les vitrages.",
+        questions: ["La pose et les raccords d'étanchéité sont-ils conformes aux prescriptions ?", "Le défaut vient-il du produit ou de la pose ?"],
+        preuves: ["Bons de commande et fiches techniques", "Photos des raccords", "Garanties du fabricant"],
+        sapiteurs: ["thermographie"],
+      },
+      {
+        id: "aspect",
+        titre: "Défauts d'aspect",
+        signes: "Plafonnage irrégulier, teintes différentes, rayures, finitions jugées insuffisantes.",
+        questions: ["Le défaut est-il visible dans des conditions normales d'observation ?", "Quel niveau de finition le contrat prévoyait-il ?"],
+        preuves: ["Photos en lumière normale", "Cahier des charges ou description de la finition prévue"],
+        sapiteurs: [],
+        piege: "Les attentes de finition sont rarement écrites : la discussion porte souvent plus sur ce qui avait été promis que sur la technique.",
+      },
+    ],
+  },
   {
     id: "piscine",
     titre: "Piscines et traitement de l'eau",
@@ -287,11 +502,16 @@ export const OUVRAGES: Ouvrage[] = [
   },
 ];
 
+// Ordre d'affichage : contrat, bâtiment, techniques, intérieur, extérieur, piscines, bassins.
+const ORDRE: Ouvrage["id"][] = ["chantier", "batiment", "techniques", "interieur", "exterieur", "piscine", "bassin"];
+OUVRAGES.sort((a, b) => ORDRE.indexOf(a.id) - ORDRE.indexOf(b.id));
+
 export const ACTEURS = [
   { id: "maitre", libelle: "Maître d'ouvrage (client)" },
   { id: "entrepreneur", libelle: "Entrepreneur ou installateur" },
   { id: "sous-traitant", libelle: "Sous-traitant" },
   { id: "architecte", libelle: "Architecte ou bureau d'études" },
+  { id: "promoteur", libelle: "Promoteur ou vendeur" },
   { id: "fournisseur", libelle: "Fournisseur de matériaux, d'équipements ou de produits" },
   { id: "entretien", libelle: "Société d'entretien" },
   { id: "assureur", libelle: "Assureur(s)" },

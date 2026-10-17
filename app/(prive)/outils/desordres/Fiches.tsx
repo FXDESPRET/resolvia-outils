@@ -33,12 +33,12 @@ export default function Fiches() {
               <ul className="cases">{d.preuves.map((p) => <li key={p}>{p}</li>)}</ul>
             </div>
           </div>
-          <div style={{ marginTop: 10 }}>
+          {d.sapiteurs.length > 0 && <div style={{ marginTop: 10 }}>
             <p className="etiquette" style={{ marginBottom: 6 }}>Analyses utiles</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {d.sapiteurs.map((s) => <span key={s} className="pastille st-testeurs" title={SAPITEURS[s].usage}>{SAPITEURS[s].titre}</span>)}
             </div>
-          </div>
+          </div>}
           {d.piege && <div className="encadre attention" style={{ marginTop: 14 }}><strong>Piège fréquent :</strong> {d.piege}</div>}
         </article>
       ))}

@@ -6,7 +6,7 @@ const OFFRES = [
   {
     titre: "Médiation commerciale",
     pour: "Entreprises en litige avec un client, un fournisseur, un partenaire ou un sous-traitant.",
-    comment: "Entretiens préalables, puis séances communes avec les décideurs et leurs conseils. Accord rédigé et, si souhaité, homologué.",
+    comment: "Entretiens préalables, puis séances communes avec les décideurs et leurs conseils. Une longue pratique de la négociation commerciale aide à faire émerger des solutions réalistes pour chacun. Accord rédigé et, si souhaité, homologué.",
     plus: "Préserver une relation d'affaires et trouver des solutions qu'un jugement ne permet pas.",
   },
   {
@@ -22,10 +22,22 @@ const OFFRES = [
     plus: "Protéger la société pendant le conflit et organiser, le cas échéant, une séparation négociée.",
   },
   {
-    titre: "Médiation technique : construction, piscines et eau",
-    pour: "Particuliers, entreprises, piscinistes, façadiers, architectes et assureurs en litige sur des malfaçons, une piscine, un bassin, le traitement de l'eau ou des dégâts aux extérieurs.",
-    comment: "Co-médiation associant une juriste et un médiateur à compétence technique. Si les causes sont contestées, constat confié à un expert commun choisi par les parties, avec les sapiteurs nécessaires et un budget convenu à l'avance.",
+    titre: "Médiation en construction",
+    pour: "Maîtres d'ouvrage, entrepreneurs, architectes, promoteurs et assureurs : retards, suppléments, réception, solde impayé, malfaçons, et litiges plus spécialisés (piscines, traitement de l'eau, extérieurs).",
+    comment: "Co-médiation associant une juriste rompue au contentieux de la construction et un médiateur qui connaît le bâtiment et la pratique de l'expertise judiciaire. Si les causes sont contestées, constat confié à un expert commun choisi par les parties, avec les sapiteurs nécessaires et un budget convenu à l'avance.",
     plus: "S'accorder d'abord sur les faits techniques, puis sur la solution : réparation, reprise des travaux, réduction de prix, calendrier, paiement du solde.",
+  },
+  {
+    titre: "Compagnies d'assurance et courtiers",
+    pour: "Gestionnaires de sinistres, services juridiques et courtiers : responsabilité civile construction, protection juridique, recours entre assureurs, sinistres en copropriété.",
+    comment: "Tri des dossiers médiables, médiations à plusieurs parties réunissant assurés et assureurs, constat technique commun lorsque les faits sont contestés.",
+    plus: "Clôturer plus vite, réduire les frais de défense et d'expertise, et préserver la relation avec l'assuré.",
+  },
+  {
+    titre: "Formations en négociation et gestion des conflits",
+    pour: "Entreprises, équipes commerciales, cadres, cabinets et études.",
+    comment: "Formations pratiques fondées sur une expérience de terrain en négociation commerciale : préparation, solution de repli, concessions, gestion des tensions, jeux de rôle.",
+    plus: "Négocier mieux, et désamorcer les conflits avant qu'ils ne deviennent des litiges.",
   },
   {
     titre: "Ateliers pour prescripteurs",
@@ -47,7 +59,9 @@ export default function Page() {
         "Définir et indiquer les tarifs, ou le principe de tarification.",
         "Compléter les biographies avec les intéressés.",
         "Compatibilité de l'activité d'expert judiciaire avec celle de médiateur, et règles de présentation de la qualité d'expert judiciaire dans une communication commerciale.",
-        "Formulation « médiateur à compétence technique » plutôt que « expert » dans la présentation des offres de médiation.",
+        "Formulation « connaît la pratique de l'expertise judiciaire » plutôt que « expert » dans la présentation des offres de médiation.",
+        "Assureurs : vérifier le vocabulaire et la pertinence de l'offre auprès d'un gestionnaire de sinistres testeur.",
+        "Formations : cohérence avec l'offre de formations Resolvia existante (négociation commerciale, gestion des conflits).",
       ]}
     >
       <section>
@@ -73,10 +87,14 @@ export default function Page() {
         <div className="carte">
           <p>
             Les litiges de construction se bloquent souvent sur les faits : chacun a son expert, et les rapports
-            s&apos;opposent. Resolvia réunit dans une même équipe une lecture juridique et une lecture technique du dossier.
+            s&apos;opposent. Beaucoup de parties attendent aussi d&apos;une expertise judiciaire qu&apos;elle dise « qui a
+            raison », alors que l&apos;expert ne fait que répondre aux questions techniques du juge. Resolvia réunit une
+            lecture juridique et une lecture technique du dossier, et une connaissance concrète de ce qu&apos;une
+            expertise judiciaire coûte, dure et apporte réellement.
           </p>
           <ul className="liste">
-            <li><strong>La co-médiation</strong> : une médiatrice juriste et un médiateur technicien conduisent ensemble les séances. Ils restent neutres et ne tranchent rien.</li>
+            <li><strong>La co-médiation</strong> : une médiatrice formée au contentieux de la construction et un médiateur qui connaît le bâtiment et la pratique de l&apos;expertise judiciaire conduisent ensemble les séances. Ils restent neutres et ne tranchent rien.</li>
+            <li><strong>Un regard lucide sur l&apos;alternative</strong> : aider chaque partie à évaluer ce qu&apos;une procédure et une expertise judiciaire lui apporteraient vraiment, en coût, en délai et en résultat.</li>
             <li><strong>Le constat commun</strong> : si nécessaire, les parties désignent ensemble un expert, distinct des médiateurs, et conviennent des analyses utiles et de leur budget.</li>
             <li><strong>Une règle simple</strong> : on ne cumule jamais, dans un même dossier, les rôles de médiateur et d&apos;expert.</li>
           </ul>
@@ -86,7 +104,10 @@ export default function Page() {
       <section className="section">
         <h2>Les médiateurs</h2>
         <div className="grille-2">
-          {["Médiateur — compétence technique : bâtiment, piscines, eau", "Médiatrice — avocate"].map((r) => (
+          {[
+            "Médiateur — négociation commerciale, construction, pratique de l'expertise judiciaire (bâtiment, piscines, eau)",
+            "Médiatrice — avocate, expérience en cabinet spécialisé dans les litiges de construction",
+          ].map((r) => (
             <div key={r} className="carte">
               <h3><span className="a-completer">Prénom Nom</span></h3>
               <p className="note">{r}</p>

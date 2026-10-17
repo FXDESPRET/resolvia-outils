@@ -18,7 +18,7 @@ export const RUBRIQUES: Record<Rubrique, { titre: string; destination: string }>
   prescripteurs: { titre: "Outils prescripteurs", destination: "Publics au lancement" },
   successions: { titre: "Outils successions", destination: "Publics au lancement" },
   associes: { titre: "Outils associés", destination: "Publics au lancement" },
-  construction: { titre: "Construction, piscines et eau", destination: "Publics au lancement" },
+  construction: { titre: "Construction et litiges techniques", destination: "Publics au lancement" },
   contenus: { titre: "Contenus", destination: "Publics après relecture" },
   pilotage: { titre: "Pilotage interne", destination: "Toujours privés" },
 };
@@ -68,6 +68,22 @@ export const OUTILS: Outil[] = [
     resume: "Modèles de clauses de médiation commentés, à adapter et copier : contrats, statuts, baux, construction, indivision.",
     chemin: "/outils/carnet-clauses",
   },
+  {
+    id: "preparer-negociation",
+    titre: "Préparer une négociation",
+    rubrique: "prescripteurs",
+    statut: "a-relire",
+    resume: "Solution de repli, seuil, objectif, zone d'accord possible et monnaies d'échange : un plan de négociation en une page.",
+    chemin: "/outils/preparer-negociation",
+  },
+  {
+    id: "portefeuille-sinistres",
+    titre: "Portefeuille de sinistres",
+    rubrique: "prescripteurs",
+    statut: "a-relire",
+    resume: "Pour les assureurs et les courtiers : estimer ce que représente, sur une année, l'orientation d'une partie des dossiers litigieux vers la médiation.",
+    chemin: "/outils/portefeuille-sinistres",
+  },
   // ---------- Outils successions ----------
   {
     id: "inventaire-attachements",
@@ -110,14 +126,22 @@ export const OUTILS: Outil[] = [
     resume: "Convenir à l'avance, entre associés, de la manière de traiter un désaccord : étapes, délais, règles de conduite.",
     chemin: "/outils/pacte-desaccord",
   },
-  // ---------- Construction, piscines et eau ----------
+  // ---------- Construction et litiges techniques ----------
   {
     id: "diagnostic-construction",
     titre: "Diagnostic d'un litige de construction",
     rubrique: "construction",
     statut: "a-relire",
-    resume: "Piscine, bassin, façade, terrasse : situer le désordre, les acteurs et les délais, et savoir quelle voie privilégier.",
+    resume: "Retard, supplément, réception, malfaçon, piscine ou façade : situer le litige, les intervenants et les délais, et savoir quelle voie privilégier.",
     chemin: "/outils/diagnostic-construction",
+  },
+  {
+    id: "expertise-judiciaire",
+    titre: "Comprendre l'expertise judiciaire",
+    rubrique: "construction",
+    statut: "a-relire",
+    resume: "Ce que fait réellement l'expert judiciaire, ce qu'il ne fait pas, combien de temps et d'argent cela représente, et comment la médiation peut s'y articuler.",
+    chemin: "/outils/expertise-judiciaire",
   },
   {
     id: "budget-technique",
@@ -132,7 +156,7 @@ export const OUTILS: Outil[] = [
     titre: "Désordres fréquents",
     rubrique: "construction",
     statut: "a-relire",
-    resume: "Piscines, traitement de l'eau, étangs et bassins, extérieurs : les questions à poser, les preuves à conserver et les analyses utiles.",
+    resume: "Chantier, gros œuvre, techniques, finitions, extérieurs, piscines et bassins : les questions à poser, les preuves à conserver et les analyses utiles.",
     chemin: "/outils/desordres",
   },
   {

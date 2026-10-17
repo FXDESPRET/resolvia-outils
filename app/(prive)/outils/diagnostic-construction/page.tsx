@@ -12,7 +12,7 @@ export default function Page() {
         "Amandine : formulation des points de vigilance sur les délais, la réception et les garanties (aucun délai chiffré n'est donné volontairement).",
         "Amandine : mention éventuelle de l'assurance de responsabilité obligatoire des entrepreneurs, après vérification de son champ d'application.",
       ]}
-      chapeau="Piscine, bassin, façade, terrasse : en quelques minutes, situer le désordre, les intervenants et le calendrier, et savoir quelle voie privilégier — médiation technique, constat conjoint, médiation à plusieurs parties."
+      chapeau="Retard, supplément, réception, solde impayé, malfaçon, piscine ou façade : en quelques minutes, situer le litige, les intervenants et le calendrier, et savoir quelle voie privilégier — médiation, constat conjoint, médiation à plusieurs parties."
     >
       <Diagnostic />
     </CadreOutil>
