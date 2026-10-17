@@ -48,6 +48,8 @@ export default function Simulateur() {
       <div className="encadre attention" style={{ marginBottom: 20 }}>
         Les montants proposés sont des <strong>valeurs d&apos;exemple</strong>. Remplacez-les par vos propres
         hypothèses : le résultat n&apos;est qu&apos;un ordre de grandeur destiné à éclairer la discussion avec le client.
+        Pour un litige technique avec expert et sapiteurs, utilisez plutôt le{" "}
+        <a href="/outils/budget-technique">budget de résolution technique</a>.
       </div>
 
       <div className="grille-2">

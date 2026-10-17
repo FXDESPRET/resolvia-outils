@@ -22,6 +22,12 @@ const OFFRES = [
     plus: "Protéger la société pendant le conflit et organiser, le cas échéant, une séparation négociée.",
   },
   {
+    titre: "Médiation technique : construction, piscines et eau",
+    pour: "Particuliers, entreprises, piscinistes, façadiers, architectes et assureurs en litige sur des malfaçons, une piscine, un bassin, le traitement de l'eau ou des dégâts aux extérieurs.",
+    comment: "Co-médiation associant une juriste et un médiateur à compétence technique. Si les causes sont contestées, constat confié à un expert commun choisi par les parties, avec les sapiteurs nécessaires et un budget convenu à l'avance.",
+    plus: "S'accorder d'abord sur les faits techniques, puis sur la solution : réparation, reprise des travaux, réduction de prix, calendrier, paiement du solde.",
+  },
+  {
     titre: "Ateliers pour prescripteurs",
     pour: "Cabinets d'avocats, études notariales, experts-comptables, conseils d'entreprise.",
     comment: "Ateliers courts sur la médiabilité des dossiers, la rédaction des clauses et l'accompagnement du client en médiation.",
@@ -40,6 +46,8 @@ export default function Page() {
         "Vérifier les règles de communication du barreau applicables à Amandine (mention de la qualité d'avocate, publicité, cumul d'activités).",
         "Définir et indiquer les tarifs, ou le principe de tarification.",
         "Compléter les biographies avec les intéressés.",
+        "Compatibilité de l'activité d'expert judiciaire avec celle de médiateur, et règles de présentation de la qualité d'expert judiciaire dans une communication commerciale.",
+        "Formulation « médiateur à compétence technique » plutôt que « expert » dans la présentation des offres de médiation.",
       ]}
     >
       <section>
@@ -61,9 +69,24 @@ export default function Page() {
       </section>
 
       <section className="section">
+        <h2>Notre approche des litiges techniques</h2>
+        <div className="carte">
+          <p>
+            Les litiges de construction se bloquent souvent sur les faits : chacun a son expert, et les rapports
+            s&apos;opposent. Resolvia réunit dans une même équipe une lecture juridique et une lecture technique du dossier.
+          </p>
+          <ul className="liste">
+            <li><strong>La co-médiation</strong> : une médiatrice juriste et un médiateur technicien conduisent ensemble les séances. Ils restent neutres et ne tranchent rien.</li>
+            <li><strong>Le constat commun</strong> : si nécessaire, les parties désignent ensemble un expert, distinct des médiateurs, et conviennent des analyses utiles et de leur budget.</li>
+            <li><strong>Une règle simple</strong> : on ne cumule jamais, dans un même dossier, les rôles de médiateur et d&apos;expert.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="section">
         <h2>Les médiateurs</h2>
         <div className="grille-2">
-          {["Médiateur", "Médiatrice — avocate"].map((r) => (
+          {["Médiateur — compétence technique : bâtiment, piscines, eau", "Médiatrice — avocate"].map((r) => (
             <div key={r} className="carte">
               <h3><span className="a-completer">Prénom Nom</span></h3>
               <p className="note">{r}</p>

@@ -58,6 +58,10 @@ Les administrateurs voient tout ; le mode « Voir en tant que » (page Administr
 | Successions | Kit de réunion familiale | `app/(prive)/outils/kit-reunion-familiale/Kit.tsx` |
 | Associés | Bilan de santé de l'association | `app/(prive)/outils/bilan-association/Bilan.tsx` |
 | Associés | Pacte de désaccord | `app/(prive)/outils/pacte-desaccord/Pacte.tsx` |
+| Construction | Diagnostic d'un litige de construction | `app/(prive)/outils/diagnostic-construction/Diagnostic.tsx` |
+| Construction | Budget de résolution technique (sapiteurs) | `app/(prive)/outils/budget-technique/Budget.tsx` |
+| Construction | Désordres fréquents | `lib/construction.ts` (données partagées : désordres, sapiteurs et leurs coûts d'exemple) |
+| Construction | Protocole de constat technique conjoint | `app/(prive)/outils/constat-conjoint/Protocole.tsx` |
 | Contenus | Cas du mois, FAQ, offres et biographies | `app/(prive)/contenus/…/page.tsx` |
 | Pilotage (admin) | Tableau de bord, registre | `lib/registre.ts` |
 

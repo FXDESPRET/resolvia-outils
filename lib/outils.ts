@@ -12,12 +12,13 @@ export const STATUTS: Record<Statut, { libelle: string; ordre: number }> = {
   public: { libelle: "Prêt pour le public", ordre: 5 },
 };
 
-export type Rubrique = "prescripteurs" | "successions" | "associes" | "contenus" | "pilotage";
+export type Rubrique = "prescripteurs" | "successions" | "associes" | "construction" | "contenus" | "pilotage";
 
 export const RUBRIQUES: Record<Rubrique, { titre: string; destination: string }> = {
   prescripteurs: { titre: "Outils prescripteurs", destination: "Publics au lancement" },
   successions: { titre: "Outils successions", destination: "Publics au lancement" },
   associes: { titre: "Outils associés", destination: "Publics au lancement" },
+  construction: { titre: "Construction, piscines et eau", destination: "Publics au lancement" },
   contenus: { titre: "Contenus", destination: "Publics après relecture" },
   pilotage: { titre: "Pilotage interne", destination: "Toujours privés" },
 };
@@ -109,6 +110,39 @@ export const OUTILS: Outil[] = [
     resume: "Convenir à l'avance, entre associés, de la manière de traiter un désaccord : étapes, délais, règles de conduite.",
     chemin: "/outils/pacte-desaccord",
   },
+  // ---------- Construction, piscines et eau ----------
+  {
+    id: "diagnostic-construction",
+    titre: "Diagnostic d'un litige de construction",
+    rubrique: "construction",
+    statut: "a-relire",
+    resume: "Piscine, bassin, façade, terrasse : situer le désordre, les acteurs et les délais, et savoir quelle voie privilégier.",
+    chemin: "/outils/diagnostic-construction",
+  },
+  {
+    id: "budget-technique",
+    titre: "Budget de résolution technique",
+    rubrique: "construction",
+    statut: "a-relire",
+    resume: "Comparer une résolution amiable avec expert commun et sapiteurs à une expertise judiciaire suivie d'une procédure.",
+    chemin: "/outils/budget-technique",
+  },
+  {
+    id: "desordres",
+    titre: "Désordres fréquents",
+    rubrique: "construction",
+    statut: "a-relire",
+    resume: "Piscines, traitement de l'eau, étangs et bassins, extérieurs : les questions à poser, les preuves à conserver et les analyses utiles.",
+    chemin: "/outils/desordres",
+  },
+  {
+    id: "constat-conjoint",
+    titre: "Protocole de constat technique conjoint",
+    rubrique: "construction",
+    statut: "a-relire",
+    resume: "Convenir ensemble d'un expert, de sa mission, des sapiteurs et du partage des frais, avant ou pendant une médiation.",
+    chemin: "/outils/constat-conjoint",
+  },
   // ---------- Contenus ----------
   {
     id: "cas-du-mois",
@@ -162,6 +196,7 @@ export const VERIFICATIONS: { libelle: string; fait: boolean }[] = [
   { libelle: "Agrément de médiateur obtenu", fait: false },
   { libelle: "Règles de communication du barreau vérifiées", fait: false },
   { libelle: "Titularité du nom Resolvia confirmée", fait: false },
+  { libelle: "Compatibilité des activités d'expert judiciaire et de médiateur vérifiée", fait: false },
   { libelle: "Mentions légales et politique de protection des données rédigées", fait: false },
   { libelle: "Tests sur téléphone", fait: false },
   { libelle: "Plans payants Vercel et Supabase activés", fait: false },

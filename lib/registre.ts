@@ -24,7 +24,10 @@ export const REGISTRE: Entree[] = [
   { date: "2026-10-17", type: "decision", texte: "Ouverture au public seulement après l'agrément et la liste de vérifications complète.", source: "Cadrage du projet" },
   { date: "2026-10-17", type: "decision", texte: "Charte graphique reprise du logo Resolvia : vert sauge, typographie Alegreya.", source: "Logo fourni" },
 
+  { date: "2026-10-17", type: "decision", texte: "Ajout d'une rubrique « Construction, piscines et eau » fondée sur les spécialités d'expert de FX, avec les sapiteurs intégrés aux budgets.", source: "Demande de FX" },
+
   // ---------- Faits ----------
+  { date: "2026-10-17", type: "fait", texte: "Spécialités d'expert de FX : piscines et traitement de l'eau, étangs et bassins, dégâts aux bâtiments extérieurs.", source: "FX" },
   { date: "2026-10-17", type: "fait", texte: "Formation HEC de médiation de novembre 2026 à juin 2027.", source: "Cadrage du projet" },
   { date: "2026-10-17", type: "fait", texte: "Le site resolvia.be est un site WordPress (constructeur Kubio) hébergé chez OVH.", source: "Analyse du site" },
   { date: "2026-10-17", type: "fait", texte: "Le dépôt GitHub FXDESPRET/resolvia-outils contient l'application.", source: "GitHub" },
@@ -33,6 +36,9 @@ export const REGISTRE: Entree[] = [
   { date: "2026-10-17", type: "hypothese", texte: "Les prescripteurs (avocats, notaires, conseils d'entreprise) seront le principal canal d'accès aux dossiers de médiation.", verification: "Retours des testeurs prescripteurs ; origine des premiers dossiers.", statut: "ouverte" },
   { date: "2026-10-17", type: "hypothese", texte: "Des outils gratuits et utiles sont un bon moyen de se faire connaître des prescripteurs.", verification: "Taux d'utilisation et avis des testeurs ; demandes de contact générées.", statut: "ouverte" },
   { date: "2026-10-17", type: "hypothese", texte: "Les successions et les conflits entre associés sont des créneaux porteurs.", verification: "Échanges avec des notaires et des conseils d'entreprise pendant la phase de test.", statut: "ouverte" },
+  { date: "2026-10-17", type: "hypothese", texte: "Une co-médiation juriste (Amandine) et technicien (FX) est une offre distinctive pour les litiges de construction, de piscines et de bassins.", verification: "Réaction des avocats, assureurs et entrepreneurs testeurs ; premiers dossiers.", statut: "ouverte" },
+  { date: "2026-10-17", type: "hypothese", texte: "Les activités d'expert judiciaire et de médiateur peuvent être exercées en parallèle, à condition de ne jamais cumuler les deux rôles dans un même dossier.", verification: "Code de bonne conduite de la Commission fédérale de médiation, règles applicables aux experts judiciaires.", statut: "ouverte" },
+  { date: "2026-10-17", type: "hypothese", texte: "Les assureurs et les entrepreneurs (piscinistes, façadiers) peuvent être des prescripteurs de médiation technique.", verification: "Échanges avec quelques assureurs et entreprises pendant la phase de test.", statut: "ouverte" },
   { date: "2026-10-17", type: "hypothese", texte: "Le plan gratuit de Vercel ne convient pas à un usage commercial.", verification: "Relire les conditions actuelles de Vercel avant le lancement.", statut: "ouverte" },
 ];
 

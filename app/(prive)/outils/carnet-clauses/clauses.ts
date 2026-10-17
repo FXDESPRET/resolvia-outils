@@ -72,12 +72,13 @@ export const CLAUSES: Clause[] = [
     id: "construction",
     categorie: "immobilier",
     titre: "Clause de médiation pour un contrat d'entreprise",
-    usage: "Contrat d'entreprise, de construction ou de rénovation entre professionnels.",
+    usage: "Contrat d'entreprise, de construction ou de rénovation, construction de piscine ou de bassin, entre professionnels.",
     texte:
-      "Tout différend relatif à l'exécution des travaux, aux délais, aux suppléments ou à la réception est soumis à la médiation avant toute procédure, sauf urgence.\n\nLe médiateur est {mediateur}, désigné dans les {delaiDesignation} jours de la demande écrite de l'une des parties. Les parties peuvent convenir, dans le cadre de la médiation, de désigner ensemble un expert technique dont elles partagent les frais. Les honoraires du médiateur sont supportés {frais}.\n\nÀ défaut d'accord dans les {delaiMediation} jours de la première réunion, chaque partie retrouve la liberté de saisir le juge compétent.",
+      "Tout différend relatif à l'exécution des travaux, aux délais, aux suppléments ou à la réception est soumis à la médiation avant toute procédure, sauf urgence.\n\nLe médiateur est {mediateur}, désigné dans les {delaiDesignation} jours de la demande écrite de l'une des parties. Les parties peuvent convenir, dans le cadre de la médiation, de désigner ensemble un expert technique, assisté au besoin de sapiteurs pour les analyses spécialisées, dont elles partagent les frais selon un budget convenu à l'avance. Les honoraires du médiateur sont supportés {frais}.\n\nÀ défaut d'accord dans les {delaiMediation} jours de la première réunion, chaque partie retrouve la liberté de saisir le juge compétent.",
     commentaires: [
       "La possibilité d'un expert commun évite la bataille d'expertises, souvent coûteuse en construction.",
       "Une médiation rapide permet parfois de poursuivre le chantier pendant la discussion.",
+      "Pour organiser le constat commun, voir l'outil « Protocole de constat technique conjoint ».",
     ],
   },
   {

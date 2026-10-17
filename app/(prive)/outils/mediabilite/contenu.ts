@@ -292,7 +292,7 @@ export const QUESTIONS: Question[] = [
 ];
 
 // ---------- Type de dossier ----------
-export type TypeDossier = "commercial" | "associes" | "succession" | "immobilier" | "autre";
+export type TypeDossier = "commercial" | "associes" | "succession" | "immobilier" | "construction" | "autre";
 
 export const TYPES: { id: TypeDossier; libelle: string; exemple: string; questionsClient: string[] }[] = [
   {
@@ -333,6 +333,16 @@ export const TYPES: { id: TypeDossier; libelle: string; exemple: string; questio
       "Allez-vous continuer à occuper les lieux ou à y côtoyer l'autre partie ?",
       "Des travaux, des délais ou une expertise pourraient-ils faire partie de la solution ?",
       "Un syndic, un assureur ou un entrepreneur devrait-il être associé ?",
+    ],
+  },
+  {
+    id: "construction",
+    libelle: "Construction, piscine ou bassin",
+    exemple: "Malfaçons, retards, solde impayé, piscine, traitement de l'eau, façade, terrasse",
+    questionsClient: [
+      "Les causes techniques du désordre sont-elles établies, ou faut-il un constat commun ?",
+      "Souhaitez-vous que l'entreprise répare elle-même, ou préférez-vous une autre solution ?",
+      "Votre assureur, ou celui de l'entreprise, a-t-il été informé ?",
     ],
   },
   {

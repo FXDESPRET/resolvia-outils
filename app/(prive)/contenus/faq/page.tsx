@@ -47,6 +47,27 @@ const FAQ: { theme: string; questions: { q: string; r: string }[] }[] = [
     ],
   },
   {
+    theme: "Litiges techniques",
+    questions: [
+      {
+        q: "Qu'est-ce qu'une médiation technique ?",
+        r: "C'est une médiation consacrée à un litige où les faits techniques comptent : malfaçons, piscine qui fuit, eau de mauvaise qualité, façade dégradée. Le médiateur comprend le langage technique et aide les parties à s'accorder d'abord sur les faits, puis sur la solution.",
+      },
+      {
+        q: "Faut-il une expertise avant de commencer ?",
+        r: "Pas forcément. Lorsque les causes sont contestées, les parties peuvent désigner ensemble un expert, dont les constats servent de base commune. C'est en général plus rapide et moins coûteux que deux expertises unilatérales, puis une expertise judiciaire.",
+      },
+      {
+        q: "Qu'est-ce qu'un sapiteur ?",
+        r: "C'est un spécialiste auquel l'expert fait appel pour une analyse précise : laboratoire d'analyse d'eau, recherche de fuite, ingénieur en stabilité, géomètre, essais de matériaux. En médiation, les parties choisissent ensemble les analyses utiles et en partagent le coût.",
+      },
+      {
+        q: "Le médiateur peut-il donner son avis technique ?",
+        r: "Non. Le médiateur reste neutre et ne tranche pas. Ses connaissances techniques lui permettent de poser les bonnes questions et de proposer les bonnes vérifications ; les constats eux-mêmes sont confiés à un expert distinct, choisi par les parties.",
+      },
+    ],
+  },
+  {
     theme: "En pratique",
     questions: [
       {
@@ -74,6 +95,7 @@ const A_VERIFIER = [
   "Confidentialité : vérifier la portée exacte et les exceptions prévues par le Code judiciaire.",
   "Prescription : vérifier à quelles conditions le cours de la prescription est suspendu (protocole de médiation, durée).",
   "Médiation judiciaire : vérifier les possibilités actuelles pour le juge de proposer ou d'ordonner une médiation.",
+  "Litiges techniques : vérifier la formulation sur le rôle du médiateur à compétence technique et la séparation avec l'expertise.",
   "Ajouter éventuellement l'obligation d'information des avocats sur les modes amiables, après vérification.",
 ];
 
