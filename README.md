@@ -53,6 +53,7 @@ Les administrateurs voient tout ; le mode « Voir en tant que » (page Administr
 | Prescripteurs | Simulateur de coût | `app/(prive)/outils/simulateur-cout/Simulateur.tsx` (valeurs d'exemple en tête) |
 | Prescripteurs | Fiche de préparation client | `app/(prive)/outils/fiche-preparation/Fiche.tsx` |
 | Prescripteurs | Carnet de clauses | `app/(prive)/outils/carnet-clauses/clauses.ts` |
+| Prescripteurs | Médiation, conciliation, expertise : repères | `app/(prive)/outils/reperes-modes/page.tsx` |
 | Prescripteurs | Préparer une négociation | `app/(prive)/outils/preparer-negociation/Negociation.tsx` |
 | Prescripteurs | Portefeuille de sinistres (assureurs) | `app/(prive)/outils/portefeuille-sinistres/Portefeuille.tsx` |
 | Successions | Inventaire des attachements | `app/(prive)/outils/inventaire-attachements/Inventaire.tsx` |
@@ -60,15 +61,21 @@ Les administrateurs voient tout ; le mode « Voir en tant que » (page Administr
 | Successions | Kit de réunion familiale | `app/(prive)/outils/kit-reunion-familiale/Kit.tsx` |
 | Associés | Bilan de santé de l'association | `app/(prive)/outils/bilan-association/Bilan.tsx` |
 | Associés | Pacte de désaccord | `app/(prive)/outils/pacte-desaccord/Pacte.tsx` |
+| Associés et investisseurs | Litige et valeur de l'entreprise | `app/(prive)/outils/valeur-entreprise/Valeur.tsx` |
 | Construction | Comprendre l'expertise judiciaire | `app/(prive)/outils/expertise-judiciaire/page.tsx` |
 | Construction | Diagnostic d'un litige de construction | `app/(prive)/outils/diagnostic-construction/Diagnostic.tsx` |
 | Construction | Budget de résolution technique (sapiteurs) | `app/(prive)/outils/budget-technique/Budget.tsx` |
 | Construction | Désordres fréquents | `lib/construction.ts` (données partagées : désordres, sapiteurs et leurs coûts d'exemple) |
 | Construction | Protocole de constat technique conjoint | `app/(prive)/outils/constat-conjoint/Protocole.tsx` |
 | Contenus | Cas du mois, FAQ, offres et biographies | `app/(prive)/contenus/…/page.tsx` |
-| Pilotage (admin) | Tableau de bord, registre | `lib/registre.ts` |
+| Pilotage (admin) | Tableau de bord, registre (dont questions à étudier), cibles et enjeux | `lib/registre.ts`, `app/(prive)/pilotage/cibles/page.tsx` |
 
 Chaque page d'outil affiche aux administrateurs un encadré « À vérifier avant ouverture » listant les points juridiques ou déontologiques à contrôler.
+
+## Points de vue
+
+- `lib/regards.ts` : ce que chaque outil apporte à chaque cible (avocats, notaires, assureurs, entreprises et investisseurs, construction et copropriétés). Un testeur voit le texte de sa profession ; un administrateur les voit tous.
+- `lib/partiesPrenantes.ts` : les parties prenantes d'un litige au-delà des deux parties, par contexte, affichées dans les résultats.
 
 ## Modifier les textes du test de médiabilité
 

@@ -9,6 +9,7 @@ export const PROFESSIONS: Record<string, string> = {
   assureur: "Compagnie d'assurance (gestion des sinistres)",
   courtier: "Courtier en assurances",
   entrepreneur: "Entrepreneur ou architecte",
+  syndic: "Syndic de copropriété",
   autre: "Autre profession",
 };
 
@@ -23,4 +24,7 @@ export const PROFILS_FICTIFS = [
   { id: "gestionnaire-type", libelle: "Gestionnaire de fonds type", profession: "gestionnaire-fonds" },
   { id: "assureur-type", libelle: "Gestionnaire de sinistres type", profession: "assureur" },
   { id: "courtier-type", libelle: "Courtier type", profession: "courtier" },
+  { id: "expert-comptable-type", libelle: "Expert-comptable type", profession: "expert-comptable" },
+  { id: "entrepreneur-type", libelle: "Entrepreneur type", profession: "entrepreneur" },
+  { id: "syndic-type", libelle: "Syndic type", profession: "syndic" },
 ];

@@ -23,15 +23,15 @@ const OFFRES = [
   },
   {
     titre: "Médiation en construction",
-    pour: "Maîtres d'ouvrage, entrepreneurs, architectes, promoteurs et assureurs : retards, suppléments, réception, solde impayé, malfaçons, et litiges plus spécialisés (piscines, traitement de l'eau, extérieurs).",
-    comment: "Co-médiation associant une juriste rompue au contentieux de la construction et un médiateur qui connaît le bâtiment et la pratique de l'expertise judiciaire. Si les causes sont contestées, constat confié à un expert commun choisi par les parties, avec les sapiteurs nécessaires et un budget convenu à l'avance.",
+    pour: "Maîtres d'ouvrage, entrepreneurs, architectes, promoteurs, syndics et assureurs : retards, suppléments, réception, solde impayé, malfaçons, et litiges plus spécialisés (piscines, traitement de l'eau, extérieurs).",
+    comment: "Co-médiation associant une avocate rompue au contentieux de la construction et un négociateur qui connaît le bâtiment et la pratique de l'expertise judiciaire. Si les causes sont contestées, constat confié à un expert commun choisi par les parties, avec les sapiteurs nécessaires et un budget convenu à l'avance.",
     plus: "S'accorder d'abord sur les faits techniques, puis sur la solution : réparation, reprise des travaux, réduction de prix, calendrier, paiement du solde.",
   },
   {
     titre: "Compagnies d'assurance et courtiers",
     pour: "Gestionnaires de sinistres, services juridiques et courtiers : responsabilité civile construction, protection juridique, recours entre assureurs, sinistres en copropriété.",
     comment: "Tri des dossiers médiables, médiations à plusieurs parties réunissant assurés et assureurs, constat technique commun lorsque les faits sont contestés.",
-    plus: "Clôturer plus vite, réduire les frais de défense et d'expertise, et préserver la relation avec l'assuré.",
+    plus: "Clôturer plus vite, réduire les frais de défense et d'expertise, et préserver la relation avec l'assuré. À terme : intégrer un recours amiable préalable dans les contrats, notamment en protection juridique et en copropriété.",
   },
   {
     titre: "Formations en négociation et gestion des conflits",
@@ -61,6 +61,8 @@ export default function Page() {
         "Compatibilité de l'activité d'expert judiciaire avec celle de médiateur, et règles de présentation de la qualité d'expert judiciaire dans une communication commerciale.",
         "Formulation « connaît la pratique de l'expertise judiciaire » plutôt que « expert » dans la présentation des offres de médiation.",
         "Assureurs : vérifier le vocabulaire et la pertinence de l'offre auprès d'un gestionnaire de sinistres testeur.",
+        "Positionnement « une avocate et un négociateur » : à confirmer avec Amandine.",
+        "Posture du médiateur (aider à faire émerger des options, ou proposer des solutions à la demande des parties) : à préciser après la formation HEC avant toute formulation publique.",
         "Formations : cohérence avec l'offre de formations Resolvia existante (négociation commerciale, gestion des conflits).",
       ]}
     >
@@ -93,7 +95,7 @@ export default function Page() {
             expertise judiciaire coûte, dure et apporte réellement.
           </p>
           <ul className="liste">
-            <li><strong>La co-médiation</strong> : une médiatrice formée au contentieux de la construction et un médiateur qui connaît le bâtiment et la pratique de l&apos;expertise judiciaire conduisent ensemble les séances. Ils restent neutres et ne tranchent rien.</li>
+            <li><strong>La co-médiation</strong> : une avocate formée au contentieux de la construction et un négociateur qui connaît le bâtiment et la pratique de l&apos;expertise judiciaire conduisent ensemble les séances. Ils restent neutres et ne tranchent rien.</li>
             <li><strong>Un regard lucide sur l&apos;alternative</strong> : aider chaque partie à évaluer ce qu&apos;une procédure et une expertise judiciaire lui apporteraient vraiment, en coût, en délai et en résultat.</li>
             <li><strong>Le constat commun</strong> : si nécessaire, les parties désignent ensemble un expert, distinct des médiateurs, et conviennent des analyses utiles et de leur budget.</li>
             <li><strong>Une règle simple</strong> : on ne cumule jamais, dans un même dossier, les rôles de médiateur et d&apos;expert.</li>
@@ -103,9 +105,10 @@ export default function Page() {
 
       <section className="section">
         <h2>Les médiateurs</h2>
+        <p className="chapeau" style={{ fontSize: "1rem" }}>Un duo complémentaire : une avocate et un négociateur.</p>
         <div className="grille-2">
           {[
-            "Médiateur — négociation commerciale, construction, pratique de l'expertise judiciaire (bâtiment, piscines, eau)",
+            "Médiateur — négociateur : négociation commerciale, conciliation, connaissance du bâtiment et de l'expertise judiciaire",
             "Médiatrice — avocate, expérience en cabinet spécialisé dans les litiges de construction",
           ].map((r) => (
             <div key={r} className="carte">

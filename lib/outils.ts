@@ -17,7 +17,7 @@ export type Rubrique = "prescripteurs" | "successions" | "associes" | "construct
 export const RUBRIQUES: Record<Rubrique, { titre: string; destination: string }> = {
   prescripteurs: { titre: "Outils prescripteurs", destination: "Publics au lancement" },
   successions: { titre: "Outils successions", destination: "Publics au lancement" },
-  associes: { titre: "Outils associés", destination: "Publics au lancement" },
+  associes: { titre: "Associés, dirigeants et investisseurs", destination: "Publics au lancement" },
   construction: { titre: "Construction et litiges techniques", destination: "Publics au lancement" },
   contenus: { titre: "Contenus", destination: "Publics après relecture" },
   pilotage: { titre: "Pilotage interne", destination: "Toujours privés" },
@@ -67,6 +67,14 @@ export const OUTILS: Outil[] = [
     statut: "a-relire",
     resume: "Modèles de clauses de médiation commentés, à adapter et copier : contrats, statuts, baux, construction, indivision.",
     chemin: "/outils/carnet-clauses",
+  },
+  {
+    id: "reperes-modes",
+    titre: "Médiation, conciliation, expertise : repères",
+    rubrique: "prescripteurs",
+    statut: "a-valider",
+    resume: "La réponse simple au client qui demande « et maintenant ? », et des repères pour situer les autres voies.",
+    chemin: "/outils/reperes-modes",
   },
   {
     id: "preparer-negociation",
@@ -125,6 +133,14 @@ export const OUTILS: Outil[] = [
     statut: "a-relire",
     resume: "Convenir à l'avance, entre associés, de la manière de traiter un désaccord : étapes, délais, règles de conduite.",
     chemin: "/outils/pacte-desaccord",
+  },
+  {
+    id: "valeur-entreprise",
+    titre: "Litige et valeur de l'entreprise",
+    rubrique: "associes",
+    statut: "a-relire",
+    resume: "Pour les dirigeants, administrateurs et investisseurs : ce qu'un litige qui dure coûte à la société au-delà des honoraires — provision, temps de la direction, cession ou levée de fonds.",
+    chemin: "/outils/valeur-entreprise",
   },
   // ---------- Construction et litiges techniques ----------
   {
@@ -200,6 +216,14 @@ export const OUTILS: Outil[] = [
     statut: "a-relire",
     resume: "Avancement des outils, calendrier de la formation et vérifications avant lancement.",
     chemin: "/pilotage/tableau-de-bord",
+  },
+  {
+    id: "cibles",
+    titre: "Cibles et enjeux",
+    rubrique: "pilotage",
+    statut: "a-relire",
+    resume: "Ce qui compte pour chaque cible, leur question, notre argument et les outils à leur montrer.",
+    chemin: "/pilotage/cibles",
   },
   {
     id: "registre",

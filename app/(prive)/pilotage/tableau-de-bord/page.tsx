@@ -14,6 +14,7 @@ export default function Page() {
   const testeurs = listeAcces().filter((a) => a.role === "testeur").length;
   const faites = VERIFICATIONS.filter((v) => v.fait).length;
   const hypothesesOuvertes = REGISTRE.filter((e) => e.type === "hypothese" && e.statut !== "confirmee" && e.statut !== "infirmee").length;
+  const questionsOuvertes = REGISTRE.filter((e) => e.type === "question" && e.statut !== "confirmee" && e.statut !== "infirmee").length;
 
   // Frise : position de chaque jalon et d'aujourd'hui.
   const t = (d: string) => new Date(d + "T12:00").getTime();
@@ -34,6 +35,7 @@ export default function Page() {
         <Indicateur valeur={outils.filter((o) => o.statut === "testeurs" || o.statut === "public").length} libelle="ouverts aux testeurs" />
         <Indicateur valeur={testeurs} libelle="testeurs invités" />
         <Indicateur valeur={`${faites}/${VERIFICATIONS.length}`} libelle="vérifications faites" />
+        <Indicateur valeur={questionsOuvertes} libelle="questions à étudier" lien="/pilotage/registre" />
         <Indicateur valeur={hypothesesOuvertes} libelle="hypothèses à vérifier" lien="/pilotage/registre" />
       </div>
 

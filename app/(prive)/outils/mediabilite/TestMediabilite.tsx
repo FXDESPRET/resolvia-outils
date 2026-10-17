@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import PartiesPrenantes from "@/components/PartiesPrenantes";
+import type { Contexte } from "@/lib/partiesPrenantes";
 import {
   BLOCS,
   QUESTIONS,
@@ -19,6 +21,15 @@ type Phase = "debut" | "questions" | "relais" | "resultat";
 // Pour combiner deux tests remplis séparément, chaque partie obtient un « code de réponse »
 // (ses choix encodés en chiffres, sans aucun nom ni texte libre) à transmettre à l'autre.
 const PREFIXE = "RM1";
+
+const CONTEXTES: Record<TypeDossier, Contexte> = {
+  commercial: "commercial",
+  associes: "associes",
+  succession: "succession",
+  immobilier: "immobilier",
+  construction: "construction",
+  autre: "commercial",
+};
 
 function encoder(type: TypeDossier, r: Reponses) {
   const t = TYPES.findIndex((x) => x.id === type);
@@ -356,6 +367,8 @@ export default function TestMediabilite() {
         <h3>Questions à poser</h3>
         <ul className="liste">{questionsClient.map((q) => <li key={q}>{q}</li>)}</ul>
       </div>
+
+      <PartiesPrenantes contexte={CONTEXTES[type!]} />
 
       <div className="carte section">
         <h3>Prochaine étape suggérée</h3>

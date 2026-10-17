@@ -22,7 +22,8 @@ export default async function Admin() {
       </p>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         <Link className="bouton secondaire" href="/pilotage/tableau-de-bord">Tableau de bord</Link>
-        <Link className="bouton secondaire" href="/pilotage/registre">Registre faits / hypothèses / décisions</Link>
+        <Link className="bouton secondaire" href="/pilotage/registre">Registre et questions à étudier</Link>
+        <Link className="bouton secondaire" href="/pilotage/cibles">Cibles et enjeux</Link>
       </div>
 
       <section className="section">

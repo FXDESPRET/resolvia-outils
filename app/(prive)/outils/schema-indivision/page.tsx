@@ -1,4 +1,5 @@
 import CadreOutil from "@/components/CadreOutil";
+import PartiesPrenantes from "@/components/PartiesPrenantes";
 import Schema from "./Schema";
 
 export const metadata = { title: "Schéma de l'indivision" };
@@ -15,6 +16,7 @@ export default function Page() {
       chapeau="Qui détient quoi, qui veut quoi ? Ce schéma rassemble sur une seule page les quotes-parts et les souhaits de chaque indivisaire, pour faire apparaître les convergences et les points de blocage."
     >
       <Schema />
+      <PartiesPrenantes contexte="succession" />
     </CadreOutil>
   );
 }

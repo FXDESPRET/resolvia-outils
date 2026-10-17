@@ -3,6 +3,7 @@ import BoutonAvis from "@/components/BoutonAvis";
 import { exigerVue, peutVoir } from "@/lib/acces";
 import { RUBRIQUES, STATUTS, outilParId } from "@/lib/outils";
 import { libelleProfession } from "@/lib/profils";
+import { GROUPES, REGARDS, groupeDe, type Groupe } from "@/lib/regards";
 
 type Props = {
   id: string;
@@ -35,6 +36,7 @@ export default async function CadreOutil({ id, chapeau, confidentialite, etroit 
           <ul className="liste" style={{ marginTop: 8 }}>{aVerifier.map((v) => <li key={v}>{v}</li>)}</ul>
         </details>
       )}
+      <Regards id={id} admin={vue.role === "admin"} profession={vue.profession} />
       {confidentialite !== false && (
         <div className="encadre info non-imprime" style={{ marginBottom: 24 }}>
           {confidentialite ??
@@ -52,6 +54,33 @@ export default async function CadreOutil({ id, chapeau, confidentialite, etroit 
           profession={vue.simulation ?? libelleProfession(vue.profession)}
         />
       )}
+    </div>
+  );
+}
+
+/** « Ce que cet outil vous apporte » : selon la profession, ou toutes les lectures pour l'administrateur. */
+function Regards({ id, admin, profession }: { id: string; admin: boolean; profession?: string }) {
+  const regards = REGARDS[id];
+  if (!regards) return null;
+  if (admin) {
+    const entrees = (Object.keys(regards) as Groupe[]).filter((g) => regards[g]);
+    return (
+      <details className="encadre regards non-imprime" style={{ marginBottom: 16 }}>
+        <summary style={{ cursor: "pointer", fontWeight: 600 }}>Ce que cet outil apporte à chaque cible ({entrees.length})</summary>
+        <dl className="regards-liste">
+          {entrees.map((g) => (
+            <div key={g}><dt>{GROUPES[g].titre}</dt><dd>{regards[g]}</dd></div>
+          ))}
+        </dl>
+      </details>
+    );
+  }
+  const g = groupeDe(profession);
+  const texte = g ? regards[g] : undefined;
+  if (!texte) return null;
+  return (
+    <div className="encadre regards non-imprime" style={{ marginBottom: 16 }}>
+      <strong>Pour vous, {libelleProfession(profession).toLowerCase()} :</strong> {texte}
     </div>
   );
 }

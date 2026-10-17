@@ -253,3 +253,26 @@ input[type=number], input[type=date] { font: inherit; padding: 10px 12px; border
 .zn-objectif { background: var(--accent); } .zn-objectif span { color: var(--accent); }
 .zn-seuil { background: var(--ambre); } .zn-seuil span { color: var(--ambre); }
 .zn-autre { background: var(--sauge-fonce); } .zn-autre span { color: var(--sauge-fonce); }
+.encadre.regards { background: #fff; border: 1px solid var(--sauge-clair); border-left: 4px solid var(--sauge); color: var(--encre); }
+.regards-liste { margin: 10px 0 0; }
+.regards-liste div { padding: 6px 0; border-top: 1px solid var(--ligne); }
+.regards-liste dt { font-weight: 700; font-size: .85rem; color: var(--accent-fonce); }
+.regards-liste dd { margin: 2px 0 0; }
+.parties-prenantes summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.parties-prenantes summary::after { content: "+"; font-size: 1.4rem; color: var(--accent); }
+.parties-prenantes[open] summary::after { content: "−"; }
+.parties-prenantes summary span { display: flex; flex-direction: column; }
+.parties-prenantes summary small { color: var(--encre-douce); }
+.pp-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.pp-carte { background: var(--fond); border-radius: 10px; padding: 12px 14px; font-size: .93rem; }
+.pp-carte p { margin: 8px 0; }
+.pp-tete { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+.pp-associer { background: var(--accent-clair); color: var(--accent-fonce); }
+.pp-consulter { background: var(--ambre-clair); color: var(--ambre); }
+.pp-informer { background: #eceae6; color: #5f5a52; }
+@media print { .parties-prenantes { display: block; } }
+.grille-enjeux td, .grille-enjeux th { text-align: center; }
+.grille-enjeux td:first-child, .grille-enjeux th:first-child { text-align: left; }
+.grille-enjeux .niveau-2 { color: var(--accent-fonce); font-size: 1.2rem; }
+.grille-enjeux .niveau-1 { color: var(--sauge); font-size: 1.1rem; }
+.grille-enjeux .niveau-0 { color: var(--ligne); }

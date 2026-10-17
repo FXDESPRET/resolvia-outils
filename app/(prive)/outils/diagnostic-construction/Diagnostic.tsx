@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ActionsResultat from "@/components/ActionsResultat";
+import PartiesPrenantes from "@/components/PartiesPrenantes";
 import { ACTEURS, OUVRAGES, PREUVES_GENERALES, SAPITEURS, type Ouvrage, type SapiteurId } from "@/lib/construction";
 
 type Stade = "chantier" | "avant-reception" | "apres-provisoire" | "apres-definitive";
@@ -252,6 +253,8 @@ export default function Diagnostic() {
               </div>
             )}
           </div>
+
+          <PartiesPrenantes contexte="construction" />
 
           <p className="note section">Diagnostic indicatif, établi à partir de vos seules réponses. Il ne remplace ni une expertise technique ni un avis juridique.</p>
           <ActionsResultat texte={texte} libelleCopie="Copier le diagnostic" />

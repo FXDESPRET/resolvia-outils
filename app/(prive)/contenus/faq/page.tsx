@@ -13,7 +13,7 @@ const FAQ: { theme: string; questions: { q: string; r: string }[] }[] = [
       },
       {
         q: "Quelle différence avec la conciliation ou l'arbitrage ?",
-        r: "L'arbitre, comme le juge, rend une décision qui s'impose aux parties. Le conciliateur peut proposer une solution. Le médiateur, lui, ne propose ni n'impose rien : ce sont les parties qui construisent l'accord.",
+        r: "L'arbitre, comme le juge, rend une décision qui s'impose aux parties. Le conciliateur peut proposer une solution ; c'est d'ailleurs ce que tente l'expert judiciaire au cours de sa mission. Le médiateur agréé aide les parties à construire elles-mêmes leur accord, dans un cadre légal qui le protège : confidentialité et possibilité d'homologation.",
       },
       {
         q: "Quels litiges peuvent être soumis à la médiation ?",
@@ -103,6 +103,7 @@ const A_VERIFIER = [
   "Confidentialité : vérifier la portée exacte et les exceptions prévues par le Code judiciaire.",
   "Prescription : vérifier à quelles conditions le cours de la prescription est suspendu (protocole de médiation, durée).",
   "Médiation judiciaire : vérifier les possibilités actuelles pour le juge de proposer ou d'ordonner une médiation.",
+  "Conciliation et médiation : formulation de la posture du médiateur à ajuster après la formation HEC (question prioritaire du registre).",
   "Litiges techniques : vérifier la formulation sur le rôle du médiateur à compétence technique et la séparation avec l'expertise.",
   "Ajouter éventuellement l'obligation d'information des avocats sur les modes amiables, après vérification.",
 ];

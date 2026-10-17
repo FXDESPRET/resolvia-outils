@@ -10,6 +10,7 @@ const FAIT = [
   "Il recherche leurs causes techniques et donne son avis sur les travaux nécessaires et leur coût.",
   "Il conduit ses travaux de manière contradictoire : chaque partie est convoquée, reçoit les pièces et peut faire valoir ses observations.",
   "Il peut faire appel à des sapiteurs pour des analyses qui sortent de sa spécialité.",
+  "Il tente de concilier les parties ; si elles s'accordent, il constate la conciliation et sa mission prend fin.",
   "Il remet un rapport motivé, qui éclaire le juge.",
 ];
 
@@ -62,7 +63,8 @@ export default function Page() {
       id="expertise-judiciaire"
       confidentialite={false}
       aVerifier={[
-        "Amandine : rôle de l'expert, caractère contradictoire, liberté d'appréciation du juge, tentative de conciliation par l'expert — vérifier les dispositions du Code judiciaire et décider s'il faut les citer.",
+        "Amandine : rôle de l'expert, caractère contradictoire, liberté d'appréciation du juge — vérifier les dispositions du Code judiciaire et décider s'il faut les citer.",
+        "À VÉRIFIER EN PRIORITÉ : disposition exacte imposant à l'expert de tenter la conciliation, et effet de la conciliation sur sa mission.",
         "FX : déroulement pratique, postes de coût, ordres de grandeur des délais vus de l'intérieur.",
         "Présenter l'expérience d'expert judiciaire de FX sans laisser croire qu'il interviendra comme expert dans les médiations.",
       ]}
@@ -105,6 +107,21 @@ export default function Page() {
       <section className="carte section">
         <h2>Ce que cela coûte vraiment</h2>
         <ul className="cases">{COUTS.map((x) => <li key={x}>{x}</li>)}</ul>
+      </section>
+
+      <section className="carte section">
+        <h2>La tentative de conciliation de l&apos;expert</h2>
+        <p>
+          L&apos;expert judiciaire a l&apos;obligation de tenter de concilier les parties. C&apos;est souvent à ce moment
+          que le litige se dénoue : une fois les faits techniques établis, chacun voit plus clairement ce qu&apos;il
+          risque de gagner ou de perdre.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          Mais cette tentative arrive tard, quand l&apos;essentiel des frais d&apos;expertise, des honoraires et des mois
+          d&apos;attente est déjà engagé. <strong>Pourquoi attendre l&apos;expertise pour faire ce qu&apos;une médiation
+          permet dès aujourd&apos;hui ?</strong> Et si un constat technique reste nécessaire, il peut être confié à un
+          expert choisi ensemble, dans un cadre amiable.
+        </p>
       </section>
 
       <section className="carte section">
